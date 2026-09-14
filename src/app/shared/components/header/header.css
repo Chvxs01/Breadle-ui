@@ -1,0 +1,56 @@
+.app-header {
+  height: 90px;
+  padding: 0 40px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 50px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 110px;
+}
+
+.navbar-container nav {
+  display: flex;
+  gap: 30px;
+}
+
+.navbar-container nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.navbar-container nav a.active {
+  color: #e6c300;
+}
+
+.navbar-icons {
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.navbar-icons button {
+  background: none;
+  border: none;
+  color: white;
+
+  font-size: 22px;
+}
+
+.navbar-icons .profile {
+  width: 35px;
+  height: 35px;
+
+  border-radius: 50%;
+
+  background-color: #dcd0ff;
+  color: #542aa8;
+}
