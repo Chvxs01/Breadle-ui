@@ -11,7 +11,9 @@
 .logo {
   display: flex;
   align-items: center;
-  height: 110px;
+  height: 50px;
+  width: 100px;
+  vertical-align: middle;
 }
 
 .navbar-container nav {

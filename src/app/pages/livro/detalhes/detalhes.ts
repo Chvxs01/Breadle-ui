@@ -8,5 +8,6 @@ import { ContainerComponent } from "../../../shared/components/container/contain
   styleUrl: './detalhes.css',
 })
 export class Detalhes {
+livro: any;
 
 }
