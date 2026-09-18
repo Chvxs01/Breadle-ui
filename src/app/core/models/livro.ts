@@ -1,4 +1,4 @@
-export interface livro {
+export interface Livro {
     id: number;
     titulo?: string;
     subtitulo?: string;

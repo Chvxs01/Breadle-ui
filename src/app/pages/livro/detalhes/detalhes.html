@@ -1,14 +1,114 @@
-<!-- <app-container>
-    @if (livro | async; as item) {
+<app-container>
 
-        <div class="detalhes-container">
-            <h1>{{item.nome}}</h1>
+  <main class="detalhes-livro">
 
-        <div class="detalhes-content">
-          <div class="poster">
-            <img [src]="item.capaUrl" alt="{{ item.nome }}" />
-          </div>
+    <!-- LADO ESQUERDO -->
+    <section class="informacoes">
 
-        </div>
-    }
-</app-container> -->
+      <div class="avaliacao">
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star"></i>
+      </div>
+
+      <div class="informacoes-basicas">
+
+        <span>1997</span>
+
+        <span>J.K Rowling</span>
+
+      </div>
+
+      <div class="paginas">
+
+        <i class="bi bi-bookmark-fill"></i>
+
+        <span>264 páginas</span>
+
+      </div>
+
+      <p class="descricao">
+
+        Harry Potter e a Pedra Filosofal acompanha um garoto órfão
+        que descobre ser um bruxo aos 11 anos. Convidado a
+        ingressar na Escola de Magia e Bruxaria de Hogwarts, ele
+        descobre um mundo mágico, faz grandes amigos—Rony e
+        Hermione—e parte em uma missão para proteger um
+        poderoso artefato de Lord Voldemort.
+
+      </p>
+
+      <p class="descricao">
+
+        Esse livro marca o início da grande aventura de Harry pelo
+        mundo da feitiçaria, onde acompanhamos ele e seus amigos
+        embarcando em uma aventura atrás da Pedra Filosofal.
+        Ganhador de diversos prêmios de literatura de destaque
+        internacional.
+
+      </p>
+
+      <div class="acoes-avaliacao">
+
+        <button>
+          <i class="bi bi-hand-thumbs-up"></i>
+        </button>
+
+        <button>
+          <i class="bi bi-hand-thumbs-down"></i>
+        </button>
+
+      </div>
+
+      <div class="acoes-livro">
+
+        <button>
+          <i class="bi bi-play"></i>
+          <span>Continuar leitura pg 57</span>
+        </button>
+
+        <button>
+          <i class="bi bi-rewind-fill"></i>
+          <span>Reiniciar leitura</span>
+        </button>
+
+        <button>
+          <i class="bi bi-plus-lg"></i>
+          <span>Adicionar a minha Livraria</span>
+        </button>
+
+        <button>
+          <i class="bi bi-book"></i>
+          <span>Ver coleção</span>
+        </button>
+
+        <button>
+          <i class="bi bi-info-circle"></i>
+          <span>Saber mais sobre o autor</span>
+        </button>
+
+        <button>
+          <i class="bi bi-download"></i>
+          <span>Baixar o livro</span>
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- LADO DIREITO -->
+    <section class="capa-livro">
+
+     <app-capa-livro>
+        [src]="livro.capaUrl"
+        [titulo]="livro.titulo"
+     </app-capa-livro>
+    
+    </section>
+
+  </main>
+
+</app-container>

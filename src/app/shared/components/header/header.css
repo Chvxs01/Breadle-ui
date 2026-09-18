@@ -16,6 +16,11 @@
   vertical-align: middle;
 }
 
+.navegacao{
+  display: flex;
+  gap: 20px;
+}
+
 .navbar-container nav {
   display: flex;
   gap: 30px;

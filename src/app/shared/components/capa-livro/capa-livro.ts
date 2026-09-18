@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-capa-livro',
@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './capa-livro.css',
 })
 export class CapaLivro {
-
+  src = input<string>('');
+  titulo = input<string>('');
 }
