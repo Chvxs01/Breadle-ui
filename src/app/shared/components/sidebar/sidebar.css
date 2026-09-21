@@ -1,0 +1,80 @@
+:host {
+  display: block;
+}
+
+.sidebar {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 88px;
+  height: calc(100vh - 64px);
+  background-color: #333;
+  z-index: 1000;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+}
+
+.sidebar.aberto {
+  transform: translateX(0);
+}
+
+
+/* Navegação */
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 20px;
+}
+
+
+/* Item */
+
+.item {
+  width: 84px;
+  min-height: 67px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: none;
+  border-radius: 10px;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+/* Ícones */
+
+.item i {
+  font-size: 27px;
+}
+
+
+/* Texto */
+
+.item span {
+  font-size: 13px;
+}
+
+
+/* Item ativo */
+
+.item.ativo {
+  background-color: #4a4a4a;
+}
+
+.item.ativo i {
+  color: #ffd900;
+}
+
+
+/* Hover */
+
+.item:hover {
+  background-color: #444;
+}

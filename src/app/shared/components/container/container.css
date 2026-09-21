@@ -4,10 +4,3 @@
   max-width: 1048px;
   width: 90%;
 }
-
-.livro-destaque {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 40px;
-    align-items: center;
-}

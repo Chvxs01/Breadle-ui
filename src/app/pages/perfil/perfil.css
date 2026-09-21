@@ -1,0 +1,136 @@
+:host {
+  display: block;
+}
+
+.pagina-perfil {
+  min-height: calc(100vh - 64px);
+  background-color: #000;
+  color: #fff;
+  padding: 25px 40px 60px;
+}
+
+.conteudo {
+  width: 100%;
+  max-width: 1048px;
+  margin: 0 auto;
+}
+
+
+/* ABAS */
+
+.abas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 35px;
+  background-color: #3b393a;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 35px;
+}
+
+.aba {
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.aba.ativa {
+  color: #ffd900;
+}
+
+
+/* CARDS */
+
+.card {
+  background-color: #1f1f1f;
+  margin-bottom: 26px;
+}
+
+
+/* ESTATÍSTICAS */
+
+.estatisticas {
+  min-height: 118px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 20px 45px;
+}
+
+.estatistica {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+.titulo-estatistica {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.titulo-estatistica i {
+  font-size: 18px;
+  color: #fff;
+}
+
+.valor {
+  background-color: #3b393a;
+  padding: 8px 22px;
+  border-radius: 9px;
+  font-size: 16px;
+}
+
+
+/* METAS */
+
+.metas {
+  min-height: 130px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 20px 45px;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.mensagem {
+  grid-column: 1 / -1;
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+
+
+/* RESPONSIVIDADE */
+
+
+@media (max-width: 768px) {
+
+  .pagina-perfil {
+    padding: 20px;
+  }
+
+  .estatisticas,
+  .metas {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 25px;
+  }
+
+  .mensagem {
+    grid-column: auto;
+  }
+
+}

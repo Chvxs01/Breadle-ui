@@ -2,7 +2,6 @@
 
   <main class="detalhes-livro">
 
-    <!-- LADO ESQUERDO -->
     <section class="informacoes">
 
       <div class="avaliacao">
@@ -15,9 +14,13 @@
 
       <div class="informacoes-basicas">
 
-        <span>1997</span>
+        <span>
+          {{ livro.dataPublicacao?.getFullYear() }}
+        </span>
 
-        <span>J.K Rowling</span>
+        <span>
+          J.K Rowling
+        </span>
 
       </div>
 
@@ -52,11 +55,11 @@
 
       <div class="acoes-avaliacao">
 
-        <button>
+        <button type="button" aria-label="Gostei">
           <i class="bi bi-hand-thumbs-up"></i>
         </button>
 
-        <button>
+        <button type="button" aria-label="Não gostei">
           <i class="bi bi-hand-thumbs-down"></i>
         </button>
 
@@ -64,32 +67,32 @@
 
       <div class="acoes-livro">
 
-        <button>
+        <button type="button">
           <i class="bi bi-play"></i>
           <span>Continuar leitura pg 57</span>
         </button>
 
-        <button>
+        <button type="button">
           <i class="bi bi-rewind-fill"></i>
           <span>Reiniciar leitura</span>
         </button>
 
-        <button>
+        <button type="button">
           <i class="bi bi-plus-lg"></i>
           <span>Adicionar a minha Livraria</span>
         </button>
 
-        <button>
+        <button type="button">
           <i class="bi bi-book"></i>
           <span>Ver coleção</span>
         </button>
 
-        <button>
+        <button type="button">
           <i class="bi bi-info-circle"></i>
           <span>Saber mais sobre o autor</span>
         </button>
 
-        <button>
+        <button type="button">
           <i class="bi bi-download"></i>
           <span>Baixar o livro</span>
         </button>
@@ -98,15 +101,13 @@
 
     </section>
 
-
-    <!-- LADO DIREITO -->
     <section class="capa-livro">
-
-     <app-capa-livro>
-        [src]="livro.capaUrl"
-        [titulo]="livro.titulo"
-     </app-capa-livro>
     
+    <app-capa-livro
+      [src]="livro.capaUrl ?? ''"
+      [titulo]="livro.titulo ?? ''">
+    </app-capa-livro>
+
     </section>
 
   </main>
