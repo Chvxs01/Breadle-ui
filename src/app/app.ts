@@ -17,6 +17,6 @@ export class App {
    menuAberto = signal(false);
 
   alternarMenu() {
-    this.menuAberto.update(valor => !valor);
+    this.menuAberto.update(aberto => !aberto);
   }
 }

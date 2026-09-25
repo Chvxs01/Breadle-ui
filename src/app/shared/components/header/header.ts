@@ -8,5 +8,5 @@ import { Component, output } from '@angular/core';
   styleUrl: './header.css',
 })
 export class Header {
-
+  logoClicada = output<void>();
 }

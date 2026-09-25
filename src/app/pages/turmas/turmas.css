@@ -38,7 +38,7 @@
   cursor: pointer;
 }
 
-.aba.ativa {
+.aba button :hover{
   color: #ffd900;
 }
 
@@ -60,6 +60,7 @@
   grid-template-columns: 1fr 1fr;
   align-items: center;
   padding: 20px 45px;
+  color: white;
 }
 
 .estatistica {
@@ -96,6 +97,7 @@
   grid-template-columns: 1fr 1fr;
   align-items: center;
   padding: 20px 45px;
+  color: white;
 }
 
 .meta {

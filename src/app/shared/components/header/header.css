@@ -13,6 +13,21 @@
   height: 50px;
 }
 
+.logo-button {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.logo-button:focus,
+.logo-button:active {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
 .logo img {
   max-width: 100%;
   max-height: 50px;
