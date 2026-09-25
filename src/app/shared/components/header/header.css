@@ -27,10 +27,11 @@
   color: #fff;
   text-decoration: none;
   font-size: 16px;
+  transition: color 0.2s ease;
 }
 
-.navegacao a.active {
-  color: #e6c300;
+.navegacao :hover{
+  color: yellow;
 }
 
 .navbar-icons {
@@ -41,11 +42,20 @@
 }
 
 .navbar-icons button {
-  background: none;
+  background: transparent;
   border: none;
   color: #fff;
   font-size: 22px;
   padding: 0;
+  cursor: pointer;
+
+  transition: color 0.2 ease,
+  transform 0.2s ease;
+}
+
+.navbar-icons button:hover {
+  color: yellow;
+  transform: scale(1.1);
 }
 
 .navbar-icons .profile {
