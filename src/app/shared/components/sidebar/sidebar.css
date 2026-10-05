@@ -31,7 +31,7 @@ nav {
 
 /* Item */
 
-.item {
+.item-menu {
   width: 84px;
   min-height: 67px;
   margin: 0 auto;
@@ -64,7 +64,7 @@ nav {
 
 /* Item ativo */
 
-.item.ativo {
+.item-menu.ativo {
   background-color: #4a4a4a;
 }
 

@@ -88,8 +88,5 @@ export class Turmas {
 
   }
 
-  CriarMeta(){
-    
-  }
 }
 

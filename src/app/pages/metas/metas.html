@@ -1,1 +1,139 @@
-<p>metas works!</p>
+<main class="pagina-metas">
+
+  <section class="conteudo-metas">
+
+    <section class="abas">
+
+      <button
+        [class.ativa]="periodoSelecionado() === 'semanal'"
+        (click)="selecionarPeriodo('semanal')"
+      >
+        Metas Semanais
+      </button>
+
+      <button
+        [class.ativa]="periodoSelecionado() === 'mensal'"
+        (click)="selecionarPeriodo('mensal')"
+      >
+        Metas Mensais
+      </button>
+
+    </section>
+
+
+    <section class="resumo">
+
+      <div class="resumo-card">
+
+        <span>Média de horas lidas semanal</span>
+
+        <strong>10 Horas</strong>
+
+      </div>
+
+
+      <div class="resumo-card">
+
+        <span>Média de horas lidas diariamente</span>
+
+        <strong>2 Horas</strong>
+
+      </div>
+
+    </section>
+
+
+    <section class="grafico-card">
+
+      <div class="grafico">
+
+        <div class="barra-grafico" style="height: 70%"></div>
+        <div class="barra-grafico" style="height: 35%"></div>
+        <div class="barra-grafico" style="height: 55%"></div>
+        <div class="barra-grafico" style="height: 45%"></div>
+        <div class="barra-grafico" style="height: 60%"></div>
+        <div class="barra-grafico" style="height: 50%"></div>
+        <div class="barra-grafico" style="height: 75%"></div>
+
+      </div>
+
+      <div class="dias">
+
+        <span>Dom</span>
+        <span>Seg</span>
+        <span>Ter</span>
+        <span>Qua</span>
+        <span>Qui</span>
+        <span>Sex</span>
+        <span>Sab</span>
+
+      </div>
+
+    </section>
+
+
+    <section class="metas">
+
+      @for (meta of metasAtuais(); track meta.id) {
+
+        <div class="meta-card">
+
+          <div class="meta-header">
+
+            <div>
+
+              <span>{{ meta.nome }}</span>
+
+              <small>
+                {{ meta.progresso }} / {{ meta.objetivo }}
+                {{ meta.unidade }}
+              </small>
+
+            </div>
+
+            <strong>
+              {{ calcularPorcentagem(meta) }}%
+            </strong>
+
+          </div>
+
+
+          <div class="barra">
+
+            <div
+              class="progresso"
+              [style.width.%]="calcularPorcentagem(meta)"
+            ></div>
+
+          </div>
+
+        </div>
+
+      }
+
+    </section>
+
+
+    <section class="mensagem-meta">
+
+      @if (metasAtuais()[0].progresso >= metasAtuais()[0].objetivo) {
+
+        <span>
+          <i class="bi bi-check-circle-fill"></i>
+          Você atingiu sua meta!
+        </span>
+
+      } @else {
+
+        <span>
+          <i class="bi bi-exclamation-triangle"></i>
+          Você está abaixo da meta
+        </span>
+
+      }
+
+    </section>
+
+  </section>
+
+</main>
