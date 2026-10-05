@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { Header } from './shared/components/header/header';
 import { Sidebar } from './shared/components/sidebar/sidebar';
 import { SidebarToggle } from './shared/components/sidebar-toggle/sidebar-toggle';
+import { Footer } from './shared/components/footer/footer';
 // import { Footer } from './shared/components/footer/footer';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, Sidebar, SidebarToggle],
+  imports: [RouterOutlet, Header, Sidebar, SidebarToggle, Footer],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
