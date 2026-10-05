@@ -5,8 +5,8 @@ import { Turmas } from './pages/turmas/turmas';
 import { CardLivro } from './pages/livro/card-livro/card-livro';
 
 export const routes: Routes = [
-    {path: 'livro/detalhes',component: Detalhes},
-    {path: '', redirectTo: 'livro/detalhes', pathMatch: 'full'},
-    {path: 'turmas', component: Turmas},
-    {path: 'card-livro', component: CardLivro},
+  { path: 'livro/detalhes/:id', component: Detalhes },
+  { path: '', redirectTo: 'card-livro', pathMatch: 'full' },
+  { path: 'turmas', component: Turmas },
+  { path: 'card-livro', component: CardLivro },
 ];

@@ -4,15 +4,13 @@
 
   <div class="livro-card">
 
-    <a routerLink="/livro/detalhes">
+    <a routerLink="['/livro/detalhes', livro().id]">
       <img
-        src="harry-potter.jpeg"
-        alt="Capa do livro">
+        [src]="livro().capaUrl"
+        [alt]="livro().titulo">
     </a>
 
-    <h2>Harry Potter e a Pedra Filosofal</h2>
-
-    <p>J.K. Rowling</p>
+    <h2>{{ livro().titulo }}</h2>
 
   </div>
 
