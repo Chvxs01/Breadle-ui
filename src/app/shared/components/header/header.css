@@ -1,82 +1,167 @@
 .app-header {
+  width: 100%;
   height: 90px;
+
   padding: 0 40px;
+
   display: flex;
   align-items: center;
+
   gap: 50px;
 }
 
-.logo {
+
+/* =========================
+   MENU + LOGO
+   ========================= */
+
+.lado-esquerdo {
   display: flex;
   align-items: center;
-  width: 100px;
-  height: 50px;
+  gap: 10px;
+
+  flex-shrink: 0;
 }
 
-.logo-button {
+.menu-button {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border: none;
   outline: none;
+
   background: transparent;
+  color: #fff;
+
   padding: 0;
   margin: 0;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
-.logo-button:focus,
-.logo-button:active {
+.menu-button i {
+  font-size: 30px;
+}
+
+.menu-button:hover {
+  color: #ffd900;
+  transform: scale(1.08);
+}
+
+.menu-button:focus,
+.menu-button:active {
   outline: none;
   border: none;
   box-shadow: none;
 }
 
+
+/* =========================
+   LOGO
+   ========================= */
+
+.logo {
+  width: 100px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+
+  text-decoration: none;
+}
+
 .logo img {
+  display: block;
+
   max-width: 100%;
   max-height: 50px;
 }
 
+
+/* =========================
+   NAVEGAÇÃO
+   ========================= */
+
 .navegacao {
   display: flex;
+  align-items: center;
+
   gap: 30px;
 }
 
 .navegacao a {
   color: #fff;
   text-decoration: none;
+
   font-size: 16px;
+
   transition: color 0.2s ease;
 }
 
-.navegacao :hover{
-  color: yellow;
+.navegacao a:hover {
+  color: #ffd900;
 }
+
+
+/* =========================
+   ÍCONES
+   ========================= */
 
 .navbar-icons {
   margin-left: auto;
+
   display: flex;
   align-items: center;
+
   gap: 25px;
 }
 
 .navbar-icons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   background: transparent;
   border: none;
+
   color: #fff;
+
   font-size: 22px;
+
   padding: 0;
+  margin: 0;
+
   cursor: pointer;
 
-  transition: color 0.2 ease,
-  transform 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .navbar-icons button:hover {
-  color: yellow;
+  color: #ffd900;
   transform: scale(1.1);
 }
+
+
+/* =========================
+   PERFIL
+   ========================= */
 
 .navbar-icons .profile {
   width: 35px;
   height: 35px;
+
   border-radius: 50%;
+
   background-color: #dcd0ff;
   color: #542aa8;
 }
