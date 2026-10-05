@@ -1,27 +1,61 @@
 <header class="app-header">
-    <div class="logo">
-        <button class="logo-button" (click)="logoClicada.emit()">
-            <img src="logo.png" alt="Breadle">
-        </button>
-    </div>
 
-    <nav class="navegacao">
-        <a routerLink="/livro-card">Livros</a>
-        <a href="#">Coleções</a>
-        <a href="#">Livraria</a>
-    </nav>
+  <div class="lado-esquerdo">
 
-    <div class="navbar-icons">
+    <button
+      class="menu-button"
+      type="button"
+      (click)="menuClicado.emit()"
+      aria-label="Abrir menu"
+    >
+      <i class="bi bi-list"></i>
+    </button>
 
-    <button>
+    <a
+      class="logo"
+      routerLink="/"
+      aria-label="Página inicial"
+    >
+      <img
+        src="logo.png"
+        alt="Breadle"
+      >
+    </a>
+
+  </div>
+
+
+  <nav class="navegacao">
+
+    <a routerLink="/livros">
+      Livros
+    </a>
+
+    <a href="#">
+      Coleções
+    </a>
+
+    <a href="#">
+      Livraria
+    </a>
+
+  </nav>
+
+
+  <div class="navbar-icons">
+
+    <button type="button">
       <i class="bi bi-search"></i>
     </button>
 
-    <button>
+    <button type="button">
       <i class="bi bi-bell"></i>
     </button>
 
-    <button class="profile">
+    <button
+      class="profile"
+      type="button"
+    >
       <i class="bi bi-person"></i>
     </button>
 

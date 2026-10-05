@@ -1,23 +1,27 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
 import { Header } from './shared/components/header/header';
 import { Sidebar } from './shared/components/sidebar/sidebar';
-import { SidebarToggle } from './shared/components/sidebar-toggle/sidebar-toggle';
 import { Footer } from './shared/components/footer/footer';
-// import { Footer } from './shared/components/footer/footer';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, Sidebar, SidebarToggle, Footer],
+  imports: [
+    RouterOutlet,
+    Header,
+    Sidebar,
+    Footer
+],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('Breadle-ui');
 
-   menuAberto = signal(false);
+  menuAberto = signal(false);
 
-  alternarMenu() {
+  alternarMenu(): void {
     this.menuAberto.update(aberto => !aberto);
   }
+
 }

@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -9,5 +9,4 @@ import { RouterLink } from '@angular/router';
 })
 export class Sidebar {
   aberto = input<boolean>(false);
-  fechar = output<void>();
 }

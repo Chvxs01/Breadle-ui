@@ -1,12 +1,8 @@
 <div class="page">
 
-  <app-header 
-  (logoClicada)="alternarMenu()">  
+  <app-header
+    (menuClicado)="alternarMenu()">
   </app-header>
-
-  <app-sidebar-toggle
-    (toggle)="alternarMenu()">
-  </app-sidebar-toggle>
 
   <app-sidebar
     [aberto]="menuAberto()">
@@ -15,4 +11,5 @@
   <router-outlet></router-outlet>
 
   <app-footer></app-footer>
+
 </div>
