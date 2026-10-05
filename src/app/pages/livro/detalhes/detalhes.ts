@@ -1,25 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ContainerComponent } from '../../../shared/components/container/container';
 import { CapaLivro } from '../../../shared/components/capa-livro/capa-livro';
 import { Livro } from '../../../core/models/livro';
+import { LivroService } from '../../../core/services/livro-service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-detalhes',
-  imports: [ContainerComponent, CapaLivro],
+  imports: [ContainerComponent, CapaLivro, DatePipe],
   templateUrl: './detalhes.html',
   styleUrl: './detalhes.css',
 })
 export class Detalhes {
 
-  livro: Livro = {
-    id: 1,
-    titulo: 'Harry Potter e a Pedra Filosofal',
-    subtitulo: '',
-    descricao: 'Harry Potter e a Pedra Filosofal acompanha um garoto órfão que descobre ser um bruxo aos 11 anos.',
-    dataPublicacao: new Date(1997, 5, 26),
-    capaUrl: 'harry-potter.jpeg',
-    idioma: 'Português',
-    status: 'disponível'
-  };
+  private route = inject(ActivatedRoute);
+  private livroService = inject(LivroService);
+
+  livro?: Livro;
+
+  ngOnInit() {
+
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.livro = this.livroService.buscarPorId(id);
+
+  }
 
 }

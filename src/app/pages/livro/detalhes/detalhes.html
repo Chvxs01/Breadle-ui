@@ -1,115 +1,53 @@
-<app-container>
+@if (livro) { <app-container>
 
-  <main class="detalhes-livro">
+```
+<main class="detalhes-livro">
 
-    <section class="informacoes">
-
-      <div class="avaliacao">
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star"></i>
-      </div>
-
-      <div class="informacoes-basicas">
-
-        <span>
-          {{ livro.dataPublicacao?.getFullYear() }}
-        </span>
-
-        <span>
-          J.K Rowling
-        </span>
-
-      </div>
-
-      <div class="paginas">
-
-        <i class="bi bi-bookmark-fill"></i>
-
-        <span>264 páginas</span>
-
-      </div>
-
-      <p class="descricao">
-
-        Harry Potter e a Pedra Filosofal acompanha um garoto órfão
-        que descobre ser um bruxo aos 11 anos. Convidado a
-        ingressar na Escola de Magia e Bruxaria de Hogwarts, ele
-        descobre um mundo mágico, faz grandes amigos—Rony e
-        Hermione—e parte em uma missão para proteger um
-        poderoso artefato de Lord Voldemort.
-
-      </p>
-
-      <p class="descricao">
-
-        Esse livro marca o início da grande aventura de Harry pelo
-        mundo da feitiçaria, onde acompanhamos ele e seus amigos
-        embarcando em uma aventura atrás da Pedra Filosofal.
-        Ganhador de diversos prêmios de literatura de destaque
-        internacional.
-
-      </p>
-
-      <div class="acoes-avaliacao">
-
-        <button type="button" aria-label="Gostei">
-          <i class="bi bi-hand-thumbs-up"></i>
-        </button>
-
-        <button type="button" aria-label="Não gostei">
-          <i class="bi bi-hand-thumbs-down"></i>
-        </button>
-
-      </div>
-
-      <div class="acoes-livro">
-
-        <button type="button">
-          <i class="bi bi-play"></i>
-          <span>Continuar leitura pg 57</span>
-        </button>
-
-        <button type="button">
-          <i class="bi bi-rewind-fill"></i>
-          <span>Reiniciar leitura</span>
-        </button>
-
-        <button type="button">
-          <i class="bi bi-plus-lg"></i>
-          <span>Adicionar a minha Livraria</span>
-        </button>
-
-        <button type="button">
-          <i class="bi bi-book"></i>
-          <span>Ver coleção</span>
-        </button>
-
-        <button type="button">
-          <i class="bi bi-info-circle"></i>
-          <span>Saber mais sobre o autor</span>
-        </button>
-
-        <button type="button">
-          <i class="bi bi-download"></i>
-          <span>Baixar o livro</span>
-        </button>
-
-      </div>
-
-    </section>
-
-    <section class="capa-livro">
-    
+  <section class="capa">
     <app-capa-livro
       [src]="livro.capaUrl ?? ''"
       [titulo]="livro.titulo ?? ''">
     </app-capa-livro>
+  </section>
 
-    </section>
+  <section class="informacoes">
 
-  </main>
+    <h1>{{ livro.titulo }}</h1>
 
-</app-container>
+    @if (livro.subtitulo) {
+      <h2>{{ livro.subtitulo }}</h2>
+    }
+
+    <p>
+      {{ livro.descricao }}
+    </p>
+
+    <p>
+      <strong>ISBN:</strong> {{ livro.isbn }}
+    </p>
+
+    <p>
+      <strong>Idioma:</strong> {{ livro.idioma }}
+    </p>
+
+    <p>
+      <strong>Status:</strong> {{ livro.status }}
+    </p>
+
+    @if (livro.dataPublicacao) {
+      <p>
+        <strong>Data de publicação:</strong>
+        {{ livro.dataPublicacao | date:'dd/MM/yyyy' }}
+      </p>
+    }
+
+  </section>
+
+</main>
+```
+
+  </app-container>
+}
+@else {
+  <p>Livro não encontrado.</p>
+}
