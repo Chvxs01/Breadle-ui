@@ -33,6 +33,9 @@
   padding-top: 20px;
 }
 
+
+/* Item */
+
 .item-menu {
   width: 84px;
   min-height: 67px;
@@ -69,6 +72,8 @@
 .item-menu:hover {
   background-color: #444;
 }
+
+/* Item ativo */
 
 .item-menu.ativo {
   background-color: #4a4a4a;

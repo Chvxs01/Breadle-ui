@@ -2,121 +2,668 @@
   display: block;
 }
 
+
+/* ========================================= */
+/* PÁGINA                                    */
+/* ========================================= */
+
 .pagina-turmas {
   min-height: calc(100vh - 64px);
+
   background-color: #000;
   color: #fff;
+
   padding: 25px 40px 60px;
 }
 
 .conteudo-turmas {
   width: 100%;
-  max-width: 1048px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
 
-/* ABAS */
+/* ========================================= */
+/* ABAS                                      */
+/* ========================================= */
 
 .abas {
   display: grid;
   grid-template-columns: 1fr 1fr;
+
   width: 100%;
   max-width: 430px;
-  height: 35px;
-  margin: 0 auto 35px;
+  height: 40px;
+
+  margin: 0 auto 30px;
+
   background-color: #3b393a;
   border-radius: 10px;
+
   overflow: hidden;
 }
 
 .aba {
   border: none;
+
   background-color: transparent;
   color: #fff;
-  font-size: 16px;
+
+  font-size: 15px;
+
   cursor: pointer;
+
+  transition: 0.2s;
 }
 
-.aba button :hover{
+.aba:hover {
+  color: #ffd900;
+}
+
+.aba.ativa {
+  background-color: #4a4849;
   color: #ffd900;
 }
 
 
-/* CARDS */
+/* ========================================= */
+/* LAYOUT                                    */
+/* ========================================= */
 
-.card {
-  width: 100%;
-  background-color: #1f1f1f;
-  margin-bottom: 26px;
+.layout-turmas {
+  display: grid;
+
+  grid-template-columns: 390px 1fr;
+
+  gap: 20px;
+
+  align-items: start;
 }
 
 
-/* ESTATÍSTICAS */
+/* ========================================= */
+/* LISTA DE TURMAS                           */
+/* ========================================= */
+
+.lista-turmas {
+  background-color: #1f1f1f;
+
+  padding: 20px;
+
+  border-radius: 4px;
+}
+
+.cabecalho-secao {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.cabecalho-secao h2 {
+  margin: 0;
+
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.cabecalho-secao p {
+  margin: 5px 0 0;
+
+  color: #aaa;
+
+  font-size: 12px;
+}
+
+
+/* ========================================= */
+/* BOTÃO CRIAR                               */
+/* ========================================= */
+
+.botao-criar {
+  display: flex;
+
+  align-items: center;
+  gap: 6px;
+
+  border: none;
+
+  background-color: #3b393a;
+  color: #fff;
+
+  padding: 8px 12px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.botao-criar:hover {
+  background-color: #4a4849;
+  color: #ffd900;
+}
+
+
+/* ========================================= */
+/* TURMA                                     */
+/* ========================================= */
+
+.turmas {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.turma {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 13px;
+
+  border: none;
+
+  background-color: #2a2a2a;
+  color: #fff;
+
+  border-radius: 8px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.turma:hover {
+  background-color: #353535;
+}
+
+.turma.selecionada {
+  border-left: 3px solid #ffd900;
+
+  background-color: #353535;
+}
+
+
+/* ========================================= */
+/* ÍCONE DA TURMA                            */
+/* ========================================= */
+
+.icone-turma {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background-color: #3b393a;
+
+  border-radius: 8px;
+
+  color: #ffd900;
+
+  font-size: 18px;
+}
+
+.icone-turma.grande {
+  width: 50px;
+  height: 50px;
+
+  font-size: 21px;
+}
+
+
+/* ========================================= */
+/* INFORMAÇÕES                               */
+/* ========================================= */
+
+.informacoes-turma {
+  min-width: 0;
+
+  flex: 1;
+}
+
+.informacoes-turma h3 {
+  margin: 0;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.informacoes-turma p {
+  margin: 4px 0 8px;
+
+  color: #aaa;
+
+  font-size: 11px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dados-turma {
+  display: flex;
+
+  gap: 12px;
+
+  color: #bbb;
+
+  font-size: 10px;
+}
+
+.dados-turma i {
+  margin-right: 3px;
+}
+
+.seta {
+  color: #888;
+}
+
+
+/* ========================================= */
+/* DETALHES DA TURMA                         */
+/* ========================================= */
+
+.detalhes-turma {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.cabecalho-detalhes {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #1f1f1f;
+
+  padding: 20px;
+
+  border-radius: 4px;
+}
+
+.titulo-turma {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.titulo-turma h2 {
+  margin: 0;
+
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.titulo-turma p {
+  margin: 4px 0 0;
+
+  color: #aaa;
+
+  font-size: 12px;
+}
+
+.botao-opcoes {
+  border: none;
+
+  background: transparent;
+
+  color: #aaa;
+
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+.botao-opcoes:hover {
+  color: #ffd900;
+}
+
+
+/* ========================================= */
+/* CARDS                                     */
+/* ========================================= */
+
+.card {
+  width: 100%;
+
+  background-color: #1f1f1f;
+
+  border-radius: 4px;
+}
+
+
+/* ========================================= */
+/* ESTATÍSTICAS                              */
+/* ========================================= */
 
 .estatisticas {
   min-height: 118px;
+
   display: grid;
+
   grid-template-columns: 1fr 1fr;
+
   align-items: center;
-  padding: 20px 45px;
-  color: white;
+
+  padding: 20px 30px;
 }
 
 .estatistica {
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   gap: 7px;
 }
 
 .titulo-estatistica {
   display: flex;
+
   align-items: center;
+
   gap: 6px;
-  font-size: 14px;
+
+  font-size: 12px;
 }
 
 .titulo-estatistica i {
-  font-size: 18px;
+  color: #ffd900;
+
+  font-size: 16px;
 }
 
 .valor {
   background-color: #3b393a;
-  padding: 8px 22px;
+
+  padding: 8px 18px;
+
   border-radius: 9px;
-  font-size: 16px;
+
+  font-size: 14px;
 }
 
 
-/* METAS */
+/* ========================================= */
+/* METAS                                     */
+/* ========================================= */
 
 .metas {
-  min-height: 130px;
+  min-height: 125px;
+
   display: grid;
+
   grid-template-columns: 1fr 1fr;
+
   align-items: center;
-  padding: 20px 45px;
-  color: white;
+
+  padding: 20px 30px;
 }
 
 .meta {
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   gap: 8px;
-  font-size: 14px;
+
+  font-size: 12px;
 }
 
 .mensagem {
   grid-column: 1 / -1;
-  margin: 0;
+
+  margin: 5px 0 0;
+
   text-align: center;
-  font-size: 14px;
+
+  font-size: 12px;
+
+  color: #ccc;
+}
+
+.mensagem i {
+  color: #ffd900;
+
+  margin-right: 5px;
 }
 
 
-/* RESPONSIVIDADE */
+/* ========================================= */
+/* PROGRESSO                                 */
+/* ========================================= */
+
+.progresso-card {
+  padding: 20px 25px;
+}
+
+.titulo-progresso {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 12px;
+}
+
+.titulo-progresso span {
+  display: block;
+
+  font-size: 13px;
+}
+
+.titulo-progresso small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #999;
+
+  font-size: 11px;
+}
+
+.titulo-progresso strong {
+  color: #ffd900;
+
+  font-size: 16px;
+}
+
+.barra {
+  width: 100%;
+
+  height: 8px;
+
+  background-color: #3b393a;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.progresso {
+  height: 100%;
+
+  background-color: #ffd900;
+
+  border-radius: 10px;
+
+  transition: width 0.4s ease;
+}
+
+
+/* ========================================= */
+/* MEMBROS                                   */
+/* ========================================= */
+
+.membros {
+  padding: 20px 25px;
+}
+
+.titulo-card {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titulo-card h3 {
+  margin: 0;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.titulo-card p {
+  margin: 4px 0 0;
+
+  color: #999;
+
+  font-size: 11px;
+}
+
+.titulo-card > i {
+  color: #ffd900;
+
+  font-size: 20px;
+}
+
+.membros-resumo {
+  display: flex;
+
+  align-items: center;
+
+  margin-top: 18px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-right: -5px;
+
+  border: 2px solid #1f1f1f;
+
+  border-radius: 50%;
+
+  background-color: #3b393a;
+
+  color: #fff;
+
+  font-size: 11px;
+}
+
+.membros-resumo span {
+  margin-left: 15px;
+
+  color: #aaa;
+
+  font-size: 11px;
+}
+
+
+/* ========================================= */
+/* RELATÓRIOS                                */
+/* ========================================= */
+
+.relatorios {
+  background-color: #1f1f1f;
+
+  padding: 25px;
+
+  border-radius: 4px;
+}
+
+.relatorios-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 15px;
+}
+
+.card-relatorio {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 20px;
+
+  background-color: #2a2a2a;
+
+  border-radius: 8px;
+}
+
+.card-relatorio > i {
+  color: #ffd900;
+
+  font-size: 24px;
+}
+
+.card-relatorio span {
+  display: block;
+
+  color: #aaa;
+
+  font-size: 11px;
+}
+
+.card-relatorio strong {
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 20px;
+}
+
+
+/* ========================================= */
+/* RESPONSIVIDADE                            */
+/* ========================================= */
+
+@media (max-width: 900px) {
+
+  .layout-turmas {
+    grid-template-columns: 1fr;
+  }
+
+  .relatorios-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
 
 @media (max-width: 768px) {
 
@@ -128,7 +675,7 @@
   .metas {
     grid-template-columns: 1fr;
 
-    gap: 25px;
+    gap: 20px;
 
     padding: 25px;
   }
