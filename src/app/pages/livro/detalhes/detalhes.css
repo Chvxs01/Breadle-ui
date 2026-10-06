@@ -100,12 +100,6 @@
   font-size: 16px;
 }
 
-.capa-livro {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 @media (max-width: 768px) {
 
   .detalhes-livro {
@@ -118,11 +112,6 @@
 
   .capa-livro {
     order: -1;
-  }
-
-  .capa-livro img {
-    width: 220px;
-    height: 320px;
   }
 
 }

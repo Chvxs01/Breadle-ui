@@ -1,12 +1,15 @@
 <div class="page">
 
-  <app-header
-    (menuClicado)="alternarMenu()">
-  </app-header>
+  <app-header (menuClicado)="alternarMenu()"></app-header>
 
   <app-sidebar
-    [aberto]="menuAberto()">
+    [aberto]="menuAberto()"
+    (fechar)="fecharMenu()">
   </app-sidebar>
+
+  @if (menuAberto()) {
+    <div class="backdrop" (click)="fecharMenu()"></div>
+  }
 
   <router-outlet></router-outlet>
 

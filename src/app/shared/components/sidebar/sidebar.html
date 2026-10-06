@@ -1,35 +1,48 @@
 <aside
   class="sidebar"
   [class.aberto]="aberto()"
+  [attr.inert]="aberto() ? null : ''"
 >
 
   <nav class="menu-lateral">
 
     <a
-      class="item-menu ativo"
+      class="item-menu"
       routerLink="/turmas"
+      routerLinkActive="ativo"
+      (click)="fechar.emit()"
     >
-      <i class="bi bi-people-fill"></i>
+      <i class="bi bi-people-fill" aria-hidden="true"></i>
       <span>Turmas</span>
     </a>
 
+    <a
+      class="item-menu"
+      routerLink="/metas"
+      routerLinkActive="ativo"
+      (click)="fechar.emit()"
+    >
+      <i class="bi bi-bullseye" aria-hidden="true"></i>
+      <span>Metas</span>
+    </a>
+
     <button class="item-menu" type="button">
-      <i class="bi bi-chat-left-text"></i>
+      <i class="bi bi-chat-left-text" aria-hidden="true"></i>
       <span>Chat</span>
     </button>
 
     <button class="item-menu" type="button">
-      <i class="bi bi-clipboard"></i>
+      <i class="bi bi-clipboard" aria-hidden="true"></i>
       <span>Atividades</span>
     </button>
 
     <button class="item-menu" type="button">
-      <i class="bi bi-plus-lg"></i>
+      <i class="bi bi-plus-lg" aria-hidden="true"></i>
       <span>Criar</span>
     </button>
 
     <button class="item-menu" type="button">
-      <i class="bi bi-bell"></i>
+      <i class="bi bi-bell" aria-hidden="true"></i>
       <span>Notificações</span>
     </button>
 

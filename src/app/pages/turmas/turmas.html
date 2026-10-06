@@ -8,19 +8,13 @@
 
     <section class="abas">
 
-      <button
-        class="aba"
-        [class.ativa]="abaSelecionada() === 'turmas'"
-        (click)="selecionarAba('turmas')"
-      >
+      <button type="button" class="aba" [class.ativa]="abaSelecionada() === 'turmas'"
+        [attr.aria-pressed]="abaSelecionada() === 'turmas'" (click)="selecionarAba('turmas')">
         Turmas
       </button>
 
-      <button
-        class="aba"
-        [class.ativa]="abaSelecionada() === 'relatorios'"
-        (click)="selecionarAba('relatorios')"
-      >
+      <button type="button" class="aba" [class.ativa]="abaSelecionada() === 'relatorios'"
+        [attr.aria-pressed]="abaSelecionada() === 'relatorios'" (click)="selecionarAba('relatorios')">
         Relatórios
       </button>
 
@@ -33,297 +27,288 @@
 
     @if (abaSelecionada() === 'turmas') {
 
-      <section class="layout-turmas">
+    <section class="layout-turmas">
 
-        <!-- ===================================== -->
-        <!-- LISTA DE TURMAS                       -->
-        <!-- ===================================== -->
+      <!-- ===================================== -->
+      <!-- LISTA DE TURMAS                       -->
+      <!-- ===================================== -->
 
-        <section class="lista-turmas">
+      <section class="lista-turmas">
 
-          <div class="cabecalho-secao">
+        <div class="cabecalho-secao">
 
-            <div>
-              <h2>Minhas turmas</h2>
-              <p>Turmas e equipes das quais você participa</p>
+          <div>
+            <h2>Minhas turmas</h2>
+            <p>Turmas e equipes das quais você participa</p>
+          </div>
+
+          <button type="button" class="botao-criar" (click)="criarTurma()">
+            <i class="bi bi-plus-lg"></i>
+            Criar
+          </button>
+
+        </div>
+
+
+        <!-- Lista -->
+
+        <div class="turmas">
+
+          @for (turma of turmas(); track turma.id) {
+
+          <div class="turma" role="button" tabindex="0" [class.selecionada]="turmaSelecionada()?.id === turma.id"
+            [attr.aria-pressed]="turmaSelecionada()?.id === turma.id" (click)="selecionarTurma(turma)"
+            (keydown.enter)="selecionarTurma(turma)" (keydown.space)="$event.preventDefault(); selecionarTurma(turma)">
+
+            <div class="icone-turma">
+              <i class="bi bi-people-fill"></i>
             </div>
 
-            <button
-              class="botao-criar"
-              (click)="criarTurma()"
-            >
-              <i class="bi bi-plus-lg"></i>
-              Criar
-            </button>
+            <div class="informacoes-turma">
+
+              <h3>
+                {{ turma.nome }}
+              </h3>
+
+              <p>
+                {{ turma.descricao }}
+              </p>
+
+              <div class="dados-turma">
+
+                <span>
+                  <i class="bi bi-people"></i>
+                  {{ turma.membros }} membros
+                </span>
+
+                <span>
+                  <i class="bi bi-book"></i>
+                  {{ turma.livrosConcluidos }} livros
+                </span>
+
+              </div>
+
+            </div>
+          </div>
+
+          <i class="bi bi-chevron-right seta"></i>
+
+ 
+          }
+
+        </div>
+
+      </section>
+
+
+      <!-- ===================================== -->
+      <!-- DETALHES DA TURMA                    -->
+      <!-- ===================================== -->
+
+      @if (turmaSelecionada(); as turma) {
+
+      <section class="detalhes-turma">
+
+        <div class="cabecalho-detalhes">
+
+          <div>
+
+            <div class="titulo-turma">
+
+              <div class="icone-turma grande">
+                <i class="bi bi-people-fill"></i>
+              </div>
+
+              <div>
+                <h2>{{ turma.nome }}</h2>
+                <p>{{ turma.descricao }}</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <button class="botao-opcoes" type="button" aria-label="Opções da turma">
+            <i class="bi bi-three-dots"></i>
+          </button>
+
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- ESTATÍSTICAS                      -->
+        <!-- ================================= -->
+
+        <section class="cartao estatisticas">
+
+          <div class="estatistica">
+
+            <div class="titulo-estatistica">
+
+              <i class="bi bi-bookmark-fill"></i>
+
+              <span>
+                Livros concluídos este mês
+              </span>
+
+            </div>
+
+            <div class="valor">
+              {{ turma.livrosConcluidos }} Livros
+            </div>
 
           </div>
 
 
-          <!-- Lista -->
+          <div class="estatistica">
 
-          <div class="turmas">
+            <div class="titulo-estatistica">
 
-            @for (turma of turmas(); track turma.id) {
+              <i class="bi bi-person-circle"></i>
 
-              <button
-                class="turma"
-                [class.selecionada]="turmaSelecionada()?.id === turma.id"
-                (click)="selecionarTurma(turma)"
-              >
+              <span>
+                Participação dos alunos
+              </span>
 
-                <div class="icone-turma">
-                  <i class="bi bi-people-fill"></i>
-                </div>
+            </div>
 
-                <div class="informacoes-turma">
-
-                  <h3>
-                    {{ turma.nome }}
-                  </h3>
-
-                  <p>
-                    {{ turma.descricao }}
-                  </p>
-
-                  <div class="dados-turma">
-
-                    <span>
-                      <i class="bi bi-people"></i>
-                      {{ turma.membros }} membros
-                    </span>
-
-                    <span>
-                      <i class="bi bi-book"></i>
-                      {{ turma.livrosConcluidos }} livros
-                    </span>
-
-                  </div>
-
-                </div>
-
-                <i class="bi bi-chevron-right seta"></i>
-
-              </button>
-
-            }
+            <div class="valor">
+              {{ turma.participacao }}%
+            </div>
 
           </div>
 
         </section>
 
 
-        <!-- ===================================== -->
-        <!-- DETALHES DA TURMA                    -->
-        <!-- ===================================== -->
+        <!-- ================================= -->
+        <!-- METAS                             -->
+        <!-- ================================= -->
 
-        @if (turmaSelecionada(); as turma) {
+        <section class="cartao metas">
 
-          <section class="detalhes-turma">
+          <div class="meta">
 
-            <div class="cabecalho-detalhes">
+            <span>
+              Meta da turma
+            </span>
 
-              <div>
-
-                <div class="titulo-turma">
-
-                  <div class="icone-turma grande">
-                    <i class="bi bi-people-fill"></i>
-                  </div>
-
-                  <div>
-                    <h2>{{ turma.nome }}</h2>
-                    <p>{{ turma.descricao }}</p>
-                  </div>
-
-                </div>
-
-              </div>
-
-              <button class="botao-opcoes">
-                <i class="bi bi-three-dots"></i>
-              </button>
-
+            <div class="valor">
+              {{ turma.metaTurma }} Livros
             </div>
 
-
-            <!-- ================================= -->
-            <!-- ESTATÍSTICAS                      -->
-            <!-- ================================= -->
-
-            <section class="card estatisticas">
-
-              <div class="estatistica">
-
-                <div class="titulo-estatistica">
-
-                  <i class="bi bi-bookmark-fill"></i>
-
-                  <span>
-                    Livros concluídos este mês
-                  </span>
-
-                </div>
-
-                <div class="valor">
-                  {{ turma.livrosConcluidos }} Livros
-                </div>
-
-              </div>
+          </div>
 
 
-              <div class="estatistica">
+          <div class="meta">
 
-                <div class="titulo-estatistica">
+            <span>
+              Meta mensal
+            </span>
 
-                  <i class="bi bi-person-circle"></i>
+            <div class="valor">
+              {{ turma.metaMensal }} Livros
+            </div>
 
-                  <span>
-                    Participação dos alunos
-                  </span>
+          </div>
 
-                </div>
-
-                <div class="valor">
-                  {{ turma.participacao }}%
-                </div>
-
-              </div>
-
-            </section>
-
-
-            <!-- ================================= -->
-            <!-- METAS                             -->
-            <!-- ================================= -->
-
-            <section class="card metas">
-
-              <div class="meta">
-
-                <span>
-                  Meta da turma
-                </span>
-
-                <div class="valor">
-                  {{ turma.metaTurma }} Livros
-                </div>
-
-              </div>
+          <p class="mensagem">
+            @if (atingiuMeta(turma)) {
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+            A turma atingiu a meta
+            } @else {
+            <i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>
+            A turma está abaixo da meta
+            }
+          </p>
+        </section>
 
 
-              <div class="meta">
+        <!-- ================================= -->
+        <!-- PROGRESSO                         -->
+        <!-- ================================= -->
 
-                <span>
-                  Meta mensal
-                </span>
+        <section class="cartao progresso-cartao">
 
-                <div class="valor">
-                  {{ turma.metaMensal }} Livros
-                </div>
+          <div class="titulo-progresso">
 
-              </div>
+            <div>
+              <span>Progresso da meta</span>
 
-              <p class="mensagem">
-                @if (turma.acimaDaMedia) {
-                  <i class="bi bi-check-circle-fill"></i>
-                  A turma está acima da média
-                } @else {
-                  <i class="bi bi-exclamation-circle-fill"></i>
-                  A turma está abaixo da média
-                }
+              <small>
+                {{ turma.livrosConcluidos }} de
+                {{ turma.metaTurma }} livros
+              </small>
+            </div>
+
+            <strong>
+              {{ calcularProgresso(turma) }}%
+            </strong>
+
+          </div>
+
+
+          <div class="barra">
+
+            <div class="progresso" [style.width.%]="calcularProgresso(turma)"></div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ================================= -->
+        <!-- MEMBROS                           -->
+        <!-- ================================= -->
+
+        <section class="cartao membros">
+
+          <div class="titulo-cartao">
+
+            <div>
+              <h3>Membros da turma</h3>
+
+              <p>
+                {{ turma.membros }} participantes
               </p>
+            </div>
 
-            </section>
+            <i class="bi bi-people-fill"></i>
 
-
-            <!-- ================================= -->
-            <!-- PROGRESSO                         -->
-            <!-- ================================= -->
-
-            <section class="card progresso-card">
-
-              <div class="titulo-progresso">
-
-                <div>
-                  <span>Progresso da meta</span>
-
-                  <small>
-                    {{ turma.livrosConcluidos }} de
-                    {{ turma.metaTurma }} livros
-                  </small>
-                </div>
-
-                <strong>
-                  {{ calcularProgresso(turma) }}%
-                </strong>
-
-              </div>
+          </div>
 
 
-              <div class="barra">
+          <div class="membros-resumo">
 
-                <div
-                  class="progresso"
-                  [style.width.%]="calcularProgresso(turma)"
-                ></div>
+            <div class="avatar">
+              M
+            </div>
 
-              </div>
+            <div class="avatar">
+              A
+            </div>
 
-            </section>
+            <div class="avatar">
+              J
+            </div>
 
+            <div class="avatar">
+              +
+            </div>
 
-            <!-- ================================= -->
-            <!-- MEMBROS                           -->
-            <!-- ================================= -->
+            <span>
+              {{ turma.membros }} membros
+            </span>
 
-            <section class="card membros">
+          </div>
 
-              <div class="titulo-card">
-
-                <div>
-                  <h3>Membros da turma</h3>
-
-                  <p>
-                    {{ turma.membros }} participantes
-                  </p>
-                </div>
-
-                <i class="bi bi-people-fill"></i>
-
-              </div>
-
-
-              <div class="membros-resumo">
-
-                <div class="avatar">
-                  M
-                </div>
-
-                <div class="avatar">
-                  A
-                </div>
-
-                <div class="avatar">
-                  J
-                </div>
-
-                <div class="avatar">
-                  +
-                </div>
-
-                <span>
-                  {{ turma.membros }} membros
-                </span>
-
-              </div>
-
-            </section>
-
-          </section>
-
-        }
+        </section>
 
       </section>
+
+      }
+
+    </section>
 
     }
 
@@ -334,61 +319,50 @@
 
     @if (abaSelecionada() === 'relatorios') {
 
-      <section class="relatorios">
+    <section class="relatorios">
 
-        <div class="cabecalho-secao">
+      <div class="cabecalho-secao">
 
-          <div>
-            <h2>Relatórios</h2>
+        <div>
+          <h2>Relatórios</h2>
 
-            <p>
-              Acompanhe o desempenho das suas turmas
-            </p>
-          </div>
-
+          <p>
+            Acompanhe o desempenho das suas turmas
+          </p>
         </div>
 
+      </div>
 
-        <section class="relatorios-grid">
 
-          <div class="card-relatorio">
+      <section class="relatorios-grid">
 
-            <i class="bi bi-book"></i>
-
-            <div>
-              <span>Livros concluídos</span>
-              <strong>110</strong>
-            </div>
-
+        <div class="card-relatorio">
+          <i class="bi bi-book" aria-hidden="true"></i>
+          <div>
+            <span>Livros concluídos</span>
+            <strong>{{ totalLivros() }}</strong>
           </div>
+        </div>
 
-
-          <div class="card-relatorio">
-
-            <i class="bi bi-people"></i>
-
-            <div>
-              <span>Participação</span>
-              <strong>87%</strong>
-            </div>
-
+        <div class="card-relatorio">
+          <i class="bi bi-people" aria-hidden="true"></i>
+          <div>
+            <span>Participação média</span>
+            <strong>{{ participacaoMedia() }}%</strong>
           </div>
+        </div>
 
-
-          <div class="card-relatorio">
-
-            <i class="bi bi-trophy"></i>
-
-            <div>
-              <span>Meta alcançada</span>
-              <strong>82%</strong>
-            </div>
-
+        <div class="card-relatorio">
+          <i class="bi bi-trophy" aria-hidden="true"></i>
+          <div>
+            <span>Turmas que atingiram a meta</span>
+            <strong>{{ percentualTurmasNaMeta() }}%</strong>
           </div>
-
-        </section>
+        </div>
 
       </section>
+
+    </section>
 
     }
 

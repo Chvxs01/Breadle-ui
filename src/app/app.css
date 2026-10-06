@@ -3,3 +3,18 @@
   background-color: #000;
   color: #fff;
 }
+
+app-header {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  background-color: #000;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 90px 0 0 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}

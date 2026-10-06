@@ -8,55 +8,33 @@
       (click)="menuClicado.emit()"
       aria-label="Abrir menu"
     >
-      <i class="bi bi-list"></i>
+      <i class="bi bi-list" aria-hidden="true"></i>
     </button>
 
-    <a
-      class="logo"
-      routerLink="/"
-      aria-label="Página inicial"
-    >
-      <img
-        src="logo.png"
-        alt="Breadle"
-      >
+    <a class="logo" routerLink="/" aria-label="Página inicial">
+      <img src="logo.png" alt="Breadle">
     </a>
 
   </div>
 
-
   <nav class="navegacao">
-
-    <a routerLink="/livros">
-      Livros
-    </a>
-
-    <a href="#">
-      Coleções
-    </a>
-
-    <a href="#">
-      Livraria
-    </a>
-
+    <a routerLink="/livros">Livros</a>
+    <a href="#" (click)="$event.preventDefault()">Coleções</a>
+    <a href="#" (click)="$event.preventDefault()">Livraria</a>
   </nav>
-
 
   <div class="navbar-icons">
 
-    <button type="button">
-      <i class="bi bi-search"></i>
+    <button type="button" aria-label="Buscar">
+      <i class="bi bi-search" aria-hidden="true"></i>
     </button>
 
-    <button type="button">
-      <i class="bi bi-bell"></i>
+    <button type="button" aria-label="Notificações">
+      <i class="bi bi-bell" aria-hidden="true"></i>
     </button>
 
-    <button
-      class="profile"
-      type="button"
-    >
-      <i class="bi bi-person"></i>
+    <button class="profile" type="button" aria-label="Perfil">
+      <i class="bi bi-person" aria-hidden="true"></i>
     </button>
 
   </div>

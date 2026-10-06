@@ -3,7 +3,7 @@
 }
 
 .pagina-metas {
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 90px);
 
   background-color: #000;
   color: #fff;

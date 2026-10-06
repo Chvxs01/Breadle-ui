@@ -4,96 +4,69 @@
 
     <section class="informacoes">
 
-      <div class="avaliacao">
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star-fill"></i>
-        <i class="bi bi-star"></i>
+      <div class="avaliacao" role="img" aria-label="Avaliação: 4 de 5 estrelas">
+        <i class="bi bi-star-fill" aria-hidden="true"></i>
+        <i class="bi bi-star-fill" aria-hidden="true"></i>
+        <i class="bi bi-star-fill" aria-hidden="true"></i>
+        <i class="bi bi-star-fill" aria-hidden="true"></i>
+        <i class="bi bi-star" aria-hidden="true"></i>
       </div>
 
       <div class="informacoes-basicas">
-
-        <span>
-          {{ livro.dataPublicacao?.getFullYear() }}
-        </span>
-
-        <span>
-          J.K Rowling
-        </span>
-
+        <span>{{ livro.dataPublicacao?.getFullYear() }}</span>
+        <span>{{ livro.autor }}</span>
       </div>
 
-      <div class="paginas">
+      @if (livro.paginas) {
+        <div class="paginas">
+          <i class="bi bi-bookmark-fill" aria-hidden="true"></i>
+          <span>{{ livro.paginas }} páginas</span>
+        </div>
+      }
 
-        <i class="bi bi-bookmark-fill"></i>
-
-        <span>264 páginas</span>
-
-      </div>
-
-      <p class="descricao">
-
-        Harry Potter e a Pedra Filosofal acompanha um garoto órfão
-        que descobre ser um bruxo aos 11 anos. Convidado a
-        ingressar na Escola de Magia e Bruxaria de Hogwarts, ele
-        descobre um mundo mágico, faz grandes amigos—Rony e
-        Hermione—e parte em uma missão para proteger um
-        poderoso artefato de Lord Voldemort.
-
-      </p>
-
-      <p class="descricao">
-
-        Esse livro marca o início da grande aventura de Harry pelo
-        mundo da feitiçaria, onde acompanhamos ele e seus amigos
-        embarcando em uma aventura atrás da Pedra Filosofal.
-        Ganhador de diversos prêmios de literatura de destaque
-        internacional.
-
-      </p>
+      @for (paragrafo of livro.descricao; track $index) {
+        <p class="descricao">{{ paragrafo }}</p>
+      }
 
       <div class="acoes-avaliacao">
-
         <button type="button" aria-label="Gostei">
-          <i class="bi bi-hand-thumbs-up"></i>
+          <i class="bi bi-hand-thumbs-up" aria-hidden="true"></i>
         </button>
 
         <button type="button" aria-label="Não gostei">
-          <i class="bi bi-hand-thumbs-down"></i>
+          <i class="bi bi-hand-thumbs-down" aria-hidden="true"></i>
         </button>
-
       </div>
 
       <div class="acoes-livro">
 
         <button type="button">
-          <i class="bi bi-play"></i>
-          <span>Continuar leitura pg 57</span>
+          <i class="bi bi-play" aria-hidden="true"></i>
+          <span>Continuar leitura pg {{ paginaAtual }}</span>
         </button>
 
         <button type="button">
-          <i class="bi bi-rewind-fill"></i>
+          <i class="bi bi-rewind-fill" aria-hidden="true"></i>
           <span>Reiniciar leitura</span>
         </button>
 
         <button type="button">
-          <i class="bi bi-plus-lg"></i>
+          <i class="bi bi-plus-lg" aria-hidden="true"></i>
           <span>Adicionar a minha Livraria</span>
         </button>
 
         <button type="button">
-          <i class="bi bi-book"></i>
+          <i class="bi bi-book" aria-hidden="true"></i>
           <span>Ver coleção</span>
         </button>
 
         <button type="button">
-          <i class="bi bi-info-circle"></i>
+          <i class="bi bi-info-circle" aria-hidden="true"></i>
           <span>Saber mais sobre o autor</span>
         </button>
 
         <button type="button">
-          <i class="bi bi-download"></i>
+          <i class="bi bi-download" aria-hidden="true"></i>
           <span>Baixar o livro</span>
         </button>
 
@@ -102,12 +75,10 @@
     </section>
 
     <section class="capa-livro">
-    
-    <app-capa-livro
-      [src]="livro.capaUrl ?? ''"
-      [titulo]="livro.titulo ?? ''">
-    </app-capa-livro>
-
+      <app-capa-livro
+        [src]="livro.capaUrl"
+        [titulo]="livro.titulo">
+      </app-capa-livro>
     </section>
 
   </main>

@@ -7,12 +7,7 @@ import { Footer } from './shared/components/footer/footer';
 
 @Component({
   selector: 'app-root',
-  imports: [
-    RouterOutlet,
-    Header,
-    Sidebar,
-    Footer
-],
+  imports: [RouterOutlet, Header, Sidebar, Footer],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -22,6 +17,10 @@ export class App {
 
   alternarMenu(): void {
     this.menuAberto.update(aberto => !aberto);
+  }
+
+  fecharMenu(): void {
+    this.menuAberto.set(false);
   }
 
 }
