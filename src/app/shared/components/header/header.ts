@@ -1,5 +1,18 @@
-import { Component, output } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, computed, inject, output, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { filter } from 'rxjs';
+
+import { Livro } from '../../../core/models/livro';
+import { LivroService } from '../../../core/services/livro-service';
+import { Trecho, contem, destacar } from '../../../core/utils/busca';
+
+interface ResultadoBusca {
+  livro: Livro;
+  titulo: Trecho[];
+  // Só aparece quando o livro foi encontrado pelo autor (e não pelo título)
+  autor: Trecho[] | null;
+}
 
 @Component({
   selector: 'app-header',
@@ -8,5 +21,56 @@ import { RouterLink } from '@angular/router';
   styleUrl: './header.css'
 })
 export class Header {
+
   menuClicado = output<void>();
+
+  private livros = inject(LivroService).listar();
+
+  termo = signal('');
+
+  // Livro sob o mouse na lista (usado para realçar a capa correspondente)
+  livroEmFoco = signal<number | null>(null);
+
+  buscaAberta = computed(() => this.termo().trim().length > 0);
+
+  resultados = computed<ResultadoBusca[]>(() => {
+    const termo = this.termo().trim();
+
+    if (!termo) {
+      return [];
+    }
+
+    return this.livros
+      .filter(livro => contem(livro.titulo, termo) || contem(livro.autor, termo))
+      .map(livro => ({
+        livro,
+        titulo: destacar(livro.titulo, termo),
+        autor: contem(livro.titulo, termo) ? null : destacar(livro.autor, termo),
+      }));
+  });
+
+  constructor() {
+    // Ao navegar para qualquer página (ex.: detalhes do livro), fecha a busca
+    inject(Router).events
+      .pipe(
+        filter(evento => evento instanceof NavigationEnd),
+        takeUntilDestroyed()
+      )
+      .subscribe(() => this.limparBusca());
+  }
+
+  aoDigitar(evento: Event): void {
+    this.termo.set((evento.target as HTMLInputElement).value);
+  }
+
+  limparBusca(): void {
+    this.termo.set('');
+    this.livroEmFoco.set(null);
+  }
+
+  abrirMenu(): void {
+    this.limparBusca();
+    this.menuClicado.emit();
+  }
+
 }

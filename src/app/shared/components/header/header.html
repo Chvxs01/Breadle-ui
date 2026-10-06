@@ -1,11 +1,11 @@
-<header class="app-header">
+<header class="app-header" (keydown.escape)="limparBusca()">
 
   <div class="lado-esquerdo">
 
     <button
       class="menu-button"
       type="button"
-      (click)="menuClicado.emit()"
+      (click)="abrirMenu()"
       aria-label="Abrir menu"
     >
       <i class="bi bi-list" aria-hidden="true"></i>
@@ -25,9 +25,24 @@
 
   <div class="navbar-icons">
 
-    <button type="button" aria-label="Buscar">
-      <i class="bi bi-search" aria-hidden="true"></i>
-    </button>
+    <div class="busca" role="search">
+
+      <input
+        #campo
+        type="text"
+        inputmode="search"
+        autocomplete="off"
+        placeholder="Buscar livros"
+        aria-label="Buscar livros"
+        [value]="termo()"
+        (input)="aoDigitar($event)"
+      >
+
+      <button type="button" aria-label="Buscar" (click)="campo.focus()">
+        <i class="bi bi-search" aria-hidden="true"></i>
+      </button>
+
+    </div>
 
     <button type="button" aria-label="Notificações">
       <i class="bi bi-bell" aria-hidden="true"></i>
@@ -38,5 +53,65 @@
     </button>
 
   </div>
+
+  @if (buscaAberta()) {
+
+    <section class="painel-busca" aria-label="Resultados da busca">
+
+      @if (resultados().length) {
+
+        <ul class="lista-resultados">
+          @for (resultado of resultados(); track resultado.livro.id) {
+            <li>
+              <a
+                class="resultado"
+                [routerLink]="['/livro/detalhes', resultado.livro.id]"
+                (mouseenter)="livroEmFoco.set(resultado.livro.id)"
+                (mouseleave)="livroEmFoco.set(null)"
+                (focus)="livroEmFoco.set(resultado.livro.id)"
+                (blur)="livroEmFoco.set(null)"
+              >
+                <span class="resultado-titulo">
+                  @for (trecho of resultado.titulo; track $index) {
+                    <span [class.destaque]="trecho.destaque">{{ trecho.texto }}</span>
+                  }
+                </span>
+
+                @if (resultado.autor; as autor) {
+                  <span class="resultado-autor">
+                    @for (trecho of autor; track $index) {
+                      <span [class.destaque]="trecho.destaque">{{ trecho.texto }}</span>
+                    }
+                  </span>
+                }
+              </a>
+            </li>
+          }
+        </ul>
+
+        <div class="capas-resultados" aria-hidden="true">
+          @for (resultado of resultados(); track resultado.livro.id) {
+            <a
+              class="capa-resultado"
+              tabindex="-1"
+              [routerLink]="['/livro/detalhes', resultado.livro.id]"
+              [class.apagada]="livroEmFoco() !== null && livroEmFoco() !== resultado.livro.id"
+            >
+              <img [src]="resultado.livro.capaUrl" alt="">
+            </a>
+          }
+        </div>
+
+      } @else {
+
+        <p class="sem-resultados" role="status">
+          Nenhum livro encontrado para “{{ termo().trim() }}”.
+        </p>
+
+      }
+
+    </section>
+
+  }
 
 </header>
