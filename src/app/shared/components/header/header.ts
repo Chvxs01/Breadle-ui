@@ -1,22 +1,9 @@
-import { Component, computed, inject, output, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { NavigationEnd, Router, RouterLink } from '@angular/router';
-import { filter } from 'rxjs';
-
-import { Livro } from '../../../core/models/livro';
-import { LivroService } from '../../../core/services/livro-service';
-import { Trecho, contem, destacar } from '../../../core/utils/busca';
-
-interface ResultadoBusca {
-  livro: Livro;
-  titulo: Trecho[];
-  // Só aparece quando o livro foi encontrado pelo autor (e não pelo título)
-  autor: Trecho[] | null;
-}
+import { Component, output } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })

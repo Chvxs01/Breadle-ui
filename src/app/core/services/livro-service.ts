@@ -18,6 +18,7 @@ export class LivroService {
       paginas: 264,
       capaUrl: 'livros/harry-potterPF.jpg',
       idioma: 'Português',
+      colecaoId: 1,
       status: 'disponível'
     },
     {
@@ -29,6 +30,7 @@ export class LivroService {
       dataPublicacao: new Date(1998, 6, 2),
       capaUrl: 'livros/harry-potterCS.jpg',
       idioma: 'Português',
+      colecaoId: 1,
       status: 'disponível'
     },
     {
@@ -40,6 +42,7 @@ export class LivroService {
       dataPublicacao: new Date(1999, 6, 8),
       capaUrl: 'livros/harry-potterPA.jpg',
       idioma: 'Português',
+      colecaoId: 1,
       status: 'disponível'
     },
     {
@@ -51,6 +54,7 @@ export class LivroService {
       dataPublicacao: new Date(2000, 6, 8),
       capaUrl: 'livros/harry-potterCF.jpg',
       idioma: 'Português',
+      colecaoId: 1,
       status: 'disponível'
     },
     {
@@ -62,6 +66,7 @@ export class LivroService {
       dataPublicacao: new Date(2003, 5, 21),
       capaUrl: 'livros/harry-potterOF.jpg',
       idioma: 'Português',
+      colecaoId: 1,
       status: 'disponível'
     },
     {
@@ -73,6 +78,7 @@ export class LivroService {
       dataPublicacao: new Date(2005, 6, 16),
       capaUrl: 'livros/harry-potterEP.jpg',
       idioma: 'Português',
+      colecaoId: 1,
       status: 'disponível'
     },
     {
@@ -84,6 +90,79 @@ export class LivroService {
       dataPublicacao: new Date(2007, 6, 21),
       capaUrl: 'livros/harry-potterRM.jpg',
       idioma: 'Português',
+      colecaoId: 1,
+      status: 'disponível'
+    },
+    {
+      id: 8,
+      titulo: 'O Senhor dos Anéis: A Sociedade do Anel',
+      autor: 'J.R.R. Tolkien',
+      subtitulo: '',
+      descricao: 'Frodo Bolseiro herda um anel misterioso e descobre que ele é a arma do Senhor do Escuro. Ao lado de uma Sociedade de nove companheiros, começa a jornada rumo à Montanha da Perdição para destruí-lo.',
+      dataPublicacao: new Date(1954, 6, 29),
+      capaUrl: 'livros/SociedadeDoAnel.jpg',
+      idioma: 'Português',
+      colecaoId: 2,
+      status: 'disponível'
+    },
+    {
+      id: 9,
+      titulo: 'O Senhor dos Anéis: As Duas Torres',
+      autor: 'J.R.R. Tolkien',
+      subtitulo: '',
+      descricao: 'A Sociedade se desfaz: Frodo e Sam seguem para Mordor guiados por Gollum, enquanto Aragorn, Legolas e Gimli lutam para defender Rohan da ameaça de Saruman.',
+      dataPublicacao: new Date(1954, 10, 11),
+      capaUrl: 'livros/AsDuasTorres.jpg',
+      idioma: 'Português',
+      colecaoId: 2,
+      status: 'disponível'
+    },
+    {
+      id: 10,
+      titulo: 'O Senhor dos Anéis: O Retorno do Rei',
+      autor: 'J.R.R. Tolkien',
+      subtitulo: '',
+      descricao: 'Com os exércitos de Sauron reunidos, Gondor enfrenta a batalha decisiva enquanto Frodo e Sam tentam alcançar a Montanha da Perdição. O destino da Terra-média está em jogo.',
+      dataPublicacao: new Date(1955, 9, 20),
+      capaUrl: 'livros/oRetornoDoRei.jpg',
+      idioma: 'Português',
+      colecaoId: 2,
+      status: 'disponível'
+    },
+    {
+      id: 11,
+      titulo: 'Para Todos os Garotos Que Já Amei',
+      autor: 'Jenny Han',
+      subtitulo: '',
+      descricao: 'Lara Jean guarda suas cartas de amor secretas em uma caixa de chapéu, até que elas são enviadas misteriosamente aos garotos por quem já se apaixonou e sua vida vira de cabeça para baixo.',
+      dataPublicacao: new Date(2014, 3, 15),
+      capaUrl: 'livros/PTGA.jpg',
+      idioma: 'Português',
+      colecaoId: 3,
+      status: 'disponível'
+    },
+    {
+      id: 12,
+      titulo: 'P.S. Ainda Amo Você',
+      autor: 'Jenny Han',
+      subtitulo: '',
+      descricao: 'Lara Jean e Peter tentam transformar um namoro de mentira em algo real, mas a volta de um antigo destinatário de suas cartas a deixa dividida.',
+      dataPublicacao: new Date(2015, 4, 26),
+      capaUrl: 'livros/AAC.jpg',
+      idioma: 'Português',
+      colecaoId: 3,
+      status: 'disponível'
+    },
+    {
+      id: 13,
+      titulo: 'Sempre e Para Sempre, Lara Jean',
+      autor: 'Jenny Han',
+      subtitulo: '',
+      descricao: 'No último ano do ensino médio, Lara Jean precisa lidar com a escolha da faculdade, o casamento do pai e o futuro do namoro com Peter, enquanto se despede de uma fase da vida.',
+      dataPublicacao: new Date(2017, 4, 2),
+      capaUrl: 'livros/Sempre.jpg',
+      idioma: 'Português',
+      colecaoId: 3,
       status: 'disponível'
     }
   ];
@@ -94,6 +173,10 @@ export class LivroService {
 
   listar(): readonly Livro[] {
     return this.livros;
+  }
+
+  listarPorColecao(colecaoId: number): readonly Livro[] {
+    return this.livros.filter(livro => livro.colecaoId === colecaoId);
   }
 
 }
