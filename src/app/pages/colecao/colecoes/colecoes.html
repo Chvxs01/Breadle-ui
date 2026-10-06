@@ -1,0 +1,19 @@
+<main class="pagina-colecoes">
+
+  @for (grupo of grupos; track grupo.categoria) {
+
+    <section class="grupo" [attr.aria-label]="'Coleções de ' + grupo.categoria">
+
+      <h2>Coleções de {{ grupo.categoria }}</h2>
+
+      <div class="trilho">
+        @for (colecao of grupo.colecoes; track colecao.id) {
+          <app-card-colecao [colecao]="colecao" />
+        }
+      </div>
+
+    </section>
+
+  }
+
+</main>

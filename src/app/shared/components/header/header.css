@@ -106,13 +106,14 @@
   transition: color 0.2s ease;
 }
 
-.navegacao a:hover {
+.navegacao a:hover,
+.navegacao a.ativo {
   color: #ffd900;
 }
 
 
 /* =========================
-   ÍCONES
+   ÍCO.NES
    ========================= */
 
 .navbar-icons {

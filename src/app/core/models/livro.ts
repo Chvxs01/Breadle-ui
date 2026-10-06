@@ -10,5 +10,6 @@ export interface Livro {
   capaUrl: string;
   bannerUrl?: string;
   idioma?: string;
+  colecaoId?: number;
   status?: 'disponível' | 'indisponível';
 }
