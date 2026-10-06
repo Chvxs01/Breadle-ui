@@ -1,0 +1,119 @@
+<main class="pagina-atividades">
+
+  <section class="conteudo-atividades">
+
+    <header class="cabecalho-pagina">
+      <div>
+        <h1>Atividades</h1>
+        <p>Pendências pessoais e das suas turmas</p>
+      </div>
+
+      <div class="resumo-pendencias">
+        <span class="badge-pendente">
+          {{ pendentes().length }} pendente{{ pendentes().length === 1 ? '' : 's' }}
+        </span>
+      </div>
+    </header>
+
+    <section class="abas">
+      <button
+        type="button"
+        class="aba"
+        [class.ativa]="filtro() === 'todas'"
+        (click)="selecionarFiltro('todas')"
+      >
+        Todas
+      </button>
+
+      <button
+        type="button"
+        class="aba"
+        [class.ativa]="filtro() === 'pessoal'"
+        (click)="selecionarFiltro('pessoal')"
+      >
+        Pessoais
+      </button>
+
+      <button
+        type="button"
+        class="aba"
+        [class.ativa]="filtro() === 'turma'"
+        (click)="selecionarFiltro('turma')"
+      >
+        Da turma
+      </button>
+    </section>
+
+    <section class="lista-atividades">
+
+      @for (atividade of listaFiltrada(); track atividade.id) {
+
+        <article class="card-atividade" [class.concluida]="atividade.status === 'concluida'">
+
+          <div class="topo-card">
+            <div class="info-principal">
+              <span class="tipo" [class.turma]="atividade.tipo === 'turma'">
+                @if (atividade.tipo === 'pessoal') {
+                  <i class="bi bi-person-fill" aria-hidden="true"></i>
+                  Pessoal
+                } @else {
+                  <i class="bi bi-people-fill" aria-hidden="true"></i>
+                  Turma
+                }
+              </span>
+
+              <h2>{{ atividade.titulo }}</h2>
+              <p>{{ atividade.descricao }}</p>
+
+              @if (atividade.turmaNome) {
+                <span class="turma-nome">
+                  <i class="bi bi-mortarboard" aria-hidden="true"></i>
+                  {{ atividade.turmaNome }}
+                </span>
+              }
+            </div>
+
+            <span class="status" [attr.data-status]="atividade.status">
+              {{ rotuloStatus(atividade.status) }}
+            </span>
+          </div>
+
+          <div class="progresso-area">
+            <div class="progresso-info">
+              <span>
+                {{ atividade.progresso }} / {{ atividade.objetivo }}
+                {{ atividade.unidade }}
+              </span>
+              <strong>{{ calcularPorcentagem(atividade) }}%</strong>
+            </div>
+
+            <div class="barra">
+              <div
+                class="preenchimento"
+                [style.width.%]="calcularPorcentagem(atividade)"
+              ></div>
+            </div>
+          </div>
+
+          @if (atividade.prazo) {
+            <footer class="rodape-card">
+              <i class="bi bi-calendar-event" aria-hidden="true"></i>
+              Prazo: {{ atividade.prazo }}
+            </footer>
+          }
+
+        </article>
+
+      } @empty {
+        <div class="vazio">
+          <i class="bi bi-clipboard-check" aria-hidden="true"></i>
+          <p>Nenhuma atividade neste filtro.</p>
+        </div>
+      }
+
+    </section>
+
+  </section>
+
+</main>
+
