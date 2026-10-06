@@ -1,0 +1,15 @@
+<app-container>
+
+  <main class="pagina-livros">
+
+    <h1>Livros</h1>
+
+    <div class="grade-livros">
+      @for (livro of livros; track livro.id) {
+        <app-card-livro [livro]="livro" />
+      }
+    </div>
+
+  </main>
+
+</app-container>

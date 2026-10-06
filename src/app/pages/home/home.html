@@ -11,35 +11,35 @@
       <a class="botao-principal" routerLink="/livros">Explorar livros</a>
     </section>
 
-    <section class="continuar">
-      <h2>Continue de onde parou</h2>
+    @if (livroAtual; as livro) {
+  <section class="continuar">
+    <h2>Continue de onde parou</h2>
 
-      <a class="continuar-card" routerLink="/livro/detalhes">
-        <img
-          [src]="leituraAtual.capaUrl"
-          [alt]="'Capa de ' + leituraAtual.titulo">
+    <a class="continuar-card" [routerLink]="['/livro/detalhes', livro.id]">
+      <img [src]="livro.capaUrl" [alt]="'Capa de ' + livro.titulo">
 
-        <div class="continuar-info">
-          <h3>{{ leituraAtual.titulo }}</h3>
-          <p>{{ leituraAtual.autor }}</p>
+      <div class="continuar-info">
+        <h3>{{ livro.titulo }}</h3>
+        <p>{{ livro.autor }}</p>
 
-          <div
-            class="barra"
-            role="progressbar"
-            aria-label="Progresso da leitura"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            [attr.aria-valuenow]="progresso()">
-            <div class="progresso" [style.width.%]="progresso()"></div>
-          </div>
-
-          <small>
-            Página {{ leituraAtual.paginaAtual }} de {{ leituraAtual.totalPaginas }}
-            ({{ progresso() }}%)
-          </small>
+        <div
+          class="barra"
+          role="progressbar"
+          aria-label="Progresso da leitura"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          [attr.aria-valuenow]="progresso()">
+          <div class="progresso" [style.width.%]="progresso()"></div>
         </div>
-      </a>
-    </section>
+
+        <small>
+          Página {{ paginaAtual }} de {{ livro.paginas }}
+          ({{ progresso() }}%)
+        </small>
+      </div>
+    </a>
+  </section>
+}
 
     <section class="atalhos">
       <h2>Acesso rápido</h2>

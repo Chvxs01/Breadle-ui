@@ -1,86 +1,117 @@
-<app-container>
+@if (livro(); as item) {
 
-  <main class="detalhes-livro">
+  <app-container>
 
-    <section class="informacoes">
+    <main class="detalhes-livro">
 
-      <div class="avaliacao" role="img" aria-label="Avaliação: 4 de 5 estrelas">
-        <i class="bi bi-star-fill" aria-hidden="true"></i>
-        <i class="bi bi-star-fill" aria-hidden="true"></i>
-        <i class="bi bi-star-fill" aria-hidden="true"></i>
-        <i class="bi bi-star-fill" aria-hidden="true"></i>
-        <i class="bi bi-star" aria-hidden="true"></i>
-      </div>
+      <section class="informacoes">
 
-      <div class="informacoes-basicas">
-        <span>{{ livro.dataPublicacao?.getFullYear() }}</span>
-        <span>{{ livro.autor }}</span>
-      </div>
+        <h1 class="titulo">{{ item.titulo }}</h1>
 
-      @if (livro.paginas) {
-        <div class="paginas">
-          <i class="bi bi-bookmark-fill" aria-hidden="true"></i>
-          <span>{{ livro.paginas }} páginas</span>
+        @if (item.subtitulo) {
+          <h2 class="subtitulo">{{ item.subtitulo }}</h2>
+        }
+
+        <div class="avaliacao" role="img" aria-label="Avaliação: 4 de 5 estrelas">
+          <i class="bi bi-star-fill" aria-hidden="true"></i>
+          <i class="bi bi-star-fill" aria-hidden="true"></i>
+          <i class="bi bi-star-fill" aria-hidden="true"></i>
+          <i class="bi bi-star-fill" aria-hidden="true"></i>
+          <i class="bi bi-star" aria-hidden="true"></i>
         </div>
-      }
 
-      @for (paragrafo of livro.descricao; track $index) {
-        <p class="descricao">{{ paragrafo }}</p>
-      }
+        <div class="informacoes-basicas">
+          @if (item.dataPublicacao) {
+            <span>{{ item.dataPublicacao.getFullYear() }}</span>
+          }
+          <span>{{ item.autor }}</span>
+        </div>
 
-      <div class="acoes-avaliacao">
-        <button type="button" aria-label="Gostei">
-          <i class="bi bi-hand-thumbs-up" aria-hidden="true"></i>
-        </button>
+        @if (item.paginas) {
+          <div class="paginas">
+            <i class="bi bi-bookmark-fill" aria-hidden="true"></i>
+            <span>{{ item.paginas }} páginas</span>
+          </div>
+        }
 
-        <button type="button" aria-label="Não gostei">
-          <i class="bi bi-hand-thumbs-down" aria-hidden="true"></i>
-        </button>
-      </div>
+        <p class="descricao">{{ item.descricao }}</p>
 
-      <div class="acoes-livro">
+        <ul class="ficha">
+          @if (item.idioma) {
+            <li><strong>Idioma:</strong> {{ item.idioma }}</li>
+          }
+          @if (item.status) {
+            <li><strong>Status:</strong> {{ item.status }}</li>
+          }
+          @if (item.isbn) {
+            <li><strong>ISBN:</strong> {{ item.isbn }}</li>
+          }
+        </ul>
 
-        <button type="button">
-          <i class="bi bi-play" aria-hidden="true"></i>
-          <span>Continuar leitura pg {{ paginaAtual }}</span>
-        </button>
+        <div class="acoes-avaliacao">
+          <button type="button" aria-label="Gostei">
+            <i class="bi bi-hand-thumbs-up" aria-hidden="true"></i>
+          </button>
 
-        <button type="button">
-          <i class="bi bi-rewind-fill" aria-hidden="true"></i>
-          <span>Reiniciar leitura</span>
-        </button>
+          <button type="button" aria-label="Não gostei">
+            <i class="bi bi-hand-thumbs-down" aria-hidden="true"></i>
+          </button>
+        </div>
 
-        <button type="button">
-          <i class="bi bi-plus-lg" aria-hidden="true"></i>
-          <span>Adicionar a minha Livraria</span>
-        </button>
+        <div class="acoes-livro">
 
-        <button type="button">
-          <i class="bi bi-book" aria-hidden="true"></i>
-          <span>Ver coleção</span>
-        </button>
+          <button type="button">
+            <i class="bi bi-play" aria-hidden="true"></i>
+            <span>Continuar leitura</span>
+          </button>
 
-        <button type="button">
-          <i class="bi bi-info-circle" aria-hidden="true"></i>
-          <span>Saber mais sobre o autor</span>
-        </button>
+          <button type="button">
+            <i class="bi bi-rewind-fill" aria-hidden="true"></i>
+            <span>Reiniciar leitura</span>
+          </button>
 
-        <button type="button">
-          <i class="bi bi-download" aria-hidden="true"></i>
-          <span>Baixar o livro</span>
-        </button>
+          <button type="button">
+            <i class="bi bi-plus-lg" aria-hidden="true"></i>
+            <span>Adicionar a minha Livraria</span>
+          </button>
 
-      </div>
+          <button type="button">
+            <i class="bi bi-book" aria-hidden="true"></i>
+            <span>Ver coleção</span>
+          </button>
 
-    </section>
+          <button type="button">
+            <i class="bi bi-info-circle" aria-hidden="true"></i>
+            <span>Saber mais sobre o autor</span>
+          </button>
 
-    <section class="capa-livro">
-      <app-capa-livro
-        [src]="livro.capaUrl"
-        [titulo]="livro.titulo">
-      </app-capa-livro>
-    </section>
+          <button type="button">
+            <i class="bi bi-download" aria-hidden="true"></i>
+            <span>Baixar o livro</span>
+          </button>
 
-  </main>
+        </div>
 
-</app-container>
+      </section>
+
+      <section class="capa-livro">
+        <app-capa-livro
+          [src]="item.capaUrl"
+          [titulo]="item.titulo">
+        </app-capa-livro>
+      </section>
+
+    </main>
+
+  </app-container>
+
+} @else {
+
+  <app-container>
+    <main class="nao-encontrado">
+      <p>Livro não encontrado.</p>
+      <a routerLink="/livros">Voltar para os livros</a>
+    </main>
+  </app-container>
+
+}

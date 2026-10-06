@@ -1,6 +1,7 @@
-import { Component, computed } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Container } from '../../shared/components/container/container';
+import { LivroService } from '../../core/services/livro-service';
 
 interface Atalho {
   titulo: string;
@@ -17,38 +18,21 @@ interface Atalho {
 })
 export class Home {
 
-  // Valores provisórios até existir backend
-  leituraAtual = {
-    titulo: 'Harry Potter e a Pedra Filosofal',
-    autor: 'J.K. Rowling',
-    capaUrl: 'livros/harry-potter.jpeg',
-    paginaAtual: 57,
-    totalPaginas: 264,
-  };
+  private livroService = inject(LivroService);
 
-  progresso = computed(() =>
-    Math.round((this.leituraAtual.paginaAtual / this.leituraAtual.totalPaginas) * 100)
-  );
+  // Livro em andamento (o progresso virá do backend no futuro)
+  livroAtual = this.livroService.buscarPorId(1);
+  paginaAtual = 57;
+
+  progresso = computed(() => {
+    const total = this.livroAtual?.paginas ?? 0;
+    return total > 0 ? Math.round((this.paginaAtual / total) * 100) : 0;
+  });
 
   atalhos: Atalho[] = [
-    {
-      titulo: 'Livros',
-      descricao: 'Explore o catálogo',
-      icone: 'bi-book',
-      rota: '/livros',
-    },
-    {
-      titulo: 'Turmas',
-      descricao: 'Acompanhe suas turmas',
-      icone: 'bi-people-fill',
-      rota: '/turmas',
-    },
-    {
-      titulo: 'Metas',
-      descricao: 'Veja seu progresso de leitura',
-      icone: 'bi-bullseye',
-      rota: '/metas',
-    },
+    { titulo: 'Livros', descricao: 'Explore o catálogo', icone: 'bi-book', rota: '/livros' },
+    { titulo: 'Turmas', descricao: 'Acompanhe suas turmas', icone: 'bi-people-fill', rota: '/turmas' },
+    { titulo: 'Metas', descricao: 'Veja seu progresso de leitura', icone: 'bi-bullseye', rota: '/metas' },
   ];
 
 }

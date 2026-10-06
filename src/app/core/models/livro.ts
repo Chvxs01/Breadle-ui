@@ -3,7 +3,7 @@ export interface Livro {
   titulo: string;
   autor: string;
   subtitulo?: string;
-  descricao: string[]; // um item por parágrafo
+  descricao: string;
   isbn?: string;
   dataPublicacao?: Date;
   paginas?: number;

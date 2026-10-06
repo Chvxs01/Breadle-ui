@@ -1,14 +1,15 @@
 import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
+import { Livros } from './pages/livro/livros/livros';
 import { Detalhes } from './pages/livro/detalhes/detalhes';
 import { Turmas } from './pages/turmas/turmas';
-import { CardLivro } from './pages/livro/card-livro/card-livro';
 import { Metas } from './pages/metas/metas';
 
 export const routes: Routes = [
   { path: '', component: Home, pathMatch: 'full' },
-  { path: 'livros', component: CardLivro },
-  { path: 'livro/detalhes', component: Detalhes },
+  { path: 'livros', component: Livros },
+  { path: 'livro/detalhes/:id', component: Detalhes },
+  { path: 'livro/detalhes', redirectTo: 'livros', pathMatch: 'full' },
   { path: 'turmas', component: Turmas },
   { path: 'metas', component: Metas },
   { path: '**', redirectTo: '' },

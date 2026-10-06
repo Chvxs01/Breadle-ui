@@ -1,0 +1,20 @@
+:host {
+  display: block;
+  background-color: #000;
+  color: #fff;
+}
+
+.pagina-livros {
+  padding: 40px 0 20px;
+}
+
+.pagina-livros h1 {
+  margin: 0 0 24px;
+  font-size: 28px;
+}
+
+.grade-livros {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 24px;
+}
