@@ -6,6 +6,7 @@ import { Colecoes } from './pages/colecao/colecoes/colecoes';
 import { DetalhesColecao } from './pages/colecao/detalhes-colecao/detalhes-colecao';
 import { Turmas } from './pages/turmas/turmas';
 import { Metas } from './pages/metas/metas';
+import { Chat } from './pages/chat/chat';
 
 export const routes: Routes = [
   { path: '', component: Home, pathMatch: 'full' },
@@ -16,5 +17,6 @@ export const routes: Routes = [
   { path: 'colecoes/:id', component: DetalhesColecao },
   { path: 'turmas', component: Turmas },
   { path: 'metas', component: Metas },
+  { path: 'chat', component: Chat},
   { path: '**', redirectTo: '' },
 ];

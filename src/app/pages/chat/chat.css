@@ -1,0 +1,718 @@
+:host {
+  display: block;
+}
+
+/* Todas as classes começam com "chat-" para não colidir com o Bootstrap
+   nem com o CSS das outras telas. */
+
+
+/* ========================================= */
+/* LAYOUT GERAL                              */
+/* ========================================= */
+
+.chat {
+  display: grid;
+  grid-template-columns: 72px 240px minmax(0, 1fr) 240px;
+
+  height: calc(100vh - 90px);
+  min-height: 480px;
+
+  background-color: #313338;
+  color: #dbdee1;
+
+  overflow: hidden;
+}
+
+.chat.sem-membros {
+  grid-template-columns: 72px 240px minmax(0, 1fr);
+}
+
+.chat p,
+.chat h2,
+.chat h3,
+.chat h4 {
+  margin: 0;
+}
+
+.chat button {
+  font-family: inherit;
+}
+
+
+/* ========================================= */
+/* TURMAS (coluna da esquerda)               */
+/* ========================================= */
+
+.chat-turmas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 12px 0;
+
+  background-color: #1e1f22;
+
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.chat-turma-botao {
+  position: relative;
+
+  flex-shrink: 0;
+
+  width: 48px;
+  height: 48px;
+
+  border: none;
+  border-radius: 50%;
+
+  background-color: #313338;
+  color: #dbdee1;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    border-radius 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.chat-turma-botao:hover,
+.chat-turma-botao.ativa {
+  border-radius: 16px;
+
+  background-color: #ffd900;
+  color: #1e1f22;
+}
+
+/* Indicador lateral (a "pílula" do Discord) */
+
+.chat-turma-botao::before {
+  content: '';
+
+  position: absolute;
+  left: -12px;
+  top: 50%;
+
+  width: 4px;
+  height: 0;
+
+  border-radius: 0 4px 4px 0;
+
+  background-color: #fff;
+
+  transform: translateY(-50%);
+
+  transition: height 0.2s ease;
+}
+
+.chat-turma-botao:hover::before {
+  height: 20px;
+}
+
+.chat-turma-botao.ativa::before {
+  height: 36px;
+}
+
+
+/* ========================================= */
+/* CANAIS                                    */
+/* ========================================= */
+
+.chat-canais {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 0;
+
+  background-color: #2b2d31;
+}
+
+.chat-canais-topo {
+  display: flex;
+  align-items: center;
+
+  height: 48px;
+  padding: 0 16px;
+
+  border-bottom: 1px solid #1f2023;
+
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.chat-canais-topo h2 {
+  font-size: 15px;
+  font-weight: 600;
+
+  color: #fff;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-canais-lista {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+
+  padding: 16px 8px;
+
+  overflow-y: auto;
+}
+
+.chat-secao-titulo {
+  display: block;
+
+  padding: 0 8px 6px;
+
+  color: #949ba4;
+
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.chat-canal {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  width: 100%;
+  padding: 6px 8px;
+
+  border: none;
+  border-radius: 4px;
+
+  background-color: transparent;
+  color: #949ba4;
+
+  font-size: 15px;
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.chat-canal i {
+  font-size: 18px;
+}
+
+.chat-canal:hover {
+  background-color: #35373c;
+  color: #dbdee1;
+}
+
+.chat-canal.ativo {
+  background-color: #404249;
+  color: #fff;
+}
+
+.chat-canal.ativo i {
+  color: #ffd900;
+}
+
+
+/* Painel do usuário (rodapé dos canais) */
+
+.chat-usuario {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  height: 56px;
+  padding: 0 10px;
+
+  background-color: #232428;
+}
+
+.chat-usuario-info {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  line-height: 1.2;
+}
+
+.chat-usuario-info strong {
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.chat-usuario-info small {
+  color: #949ba4;
+
+  font-size: 12px;
+}
+
+
+/* ========================================= */
+/* CONVERSA                                  */
+/* ========================================= */
+
+.chat-conversa {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 0;
+
+  background-color: #313338;
+}
+
+.chat-conversa-topo {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  height: 48px;
+  padding: 0 16px;
+
+  border-bottom: 1px solid #26272b;
+
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.chat-conversa-topo > i {
+  color: #949ba4;
+
+  font-size: 22px;
+}
+
+.chat-conversa-topo h3 {
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.chat-divisor-vertical {
+  width: 1px;
+  height: 24px;
+
+  margin: 0 4px;
+
+  background-color: #4e5058;
+}
+
+.chat-conversa-topo p {
+  flex: 1;
+
+  color: #949ba4;
+
+  font-size: 14px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-botao-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  border: none;
+  border-radius: 4px;
+
+  background-color: transparent;
+  color: #b5bac1;
+
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+.chat-botao-icone:hover {
+  color: #fff;
+}
+
+.chat-botao-icone.ativo {
+  color: #ffd900;
+}
+
+
+/* ========================================= */
+/* MENSAGENS                                 */
+/* ========================================= */
+
+.chat-mensagens {
+  flex: 1;
+
+  min-height: 0;
+
+  padding: 16px 0;
+
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: #1a1b1e #2b2d31;
+}
+
+.chat-vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 60px 20px;
+
+  color: #949ba4;
+
+  text-align: center;
+}
+
+.chat-vazio i {
+  font-size: 40px;
+}
+
+.chat-vazio h4 {
+  color: #fff;
+
+  font-size: 18px;
+}
+
+.chat-divisor-dia {
+  display: flex;
+  align-items: center;
+
+  margin: 16px 16px 8px;
+
+  border-top: 1px solid #3f4147;
+
+  height: 0;
+
+  overflow: visible;
+}
+
+.chat-divisor-dia span {
+  margin: 0 auto;
+  padding: 0 8px;
+
+  background-color: #313338;
+  color: #949ba4;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.chat-mensagem {
+  position: relative;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 16px;
+
+  padding: 2px 16px 2px 16px;
+  margin-top: 16px;
+}
+
+.chat-mensagem.agrupada {
+  margin-top: 0;
+}
+
+.chat-mensagem:hover {
+  background-color: #2e3035;
+}
+
+.chat-mensagem-corpo {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.chat-mensagem-corpo header {
+  display: flex;
+  align-items: baseline;
+
+  gap: 8px;
+}
+
+.chat-mensagem-corpo header strong {
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.chat-mensagem-corpo time {
+  color: #949ba4;
+
+  font-size: 12px;
+}
+
+.chat-mensagem-corpo p {
+  color: #dbdee1;
+
+  font-size: 16px;
+  line-height: 1.4;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Hora que aparece ao passar o mouse nas mensagens agrupadas */
+
+.chat-hora-lateral {
+  flex-shrink: 0;
+
+  width: 40px;
+
+  color: transparent;
+
+  font-size: 11px;
+  text-align: center;
+
+  line-height: 22px;
+}
+
+.chat-mensagem.agrupada:hover .chat-hora-lateral {
+  color: #949ba4;
+}
+
+
+/* ========================================= */
+/* AVATAR                                    */
+/* ========================================= */
+
+.chat-avatar {
+  position: relative;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+
+  color: #1e1f22;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.chat-avatar.com-status::after {
+  content: '';
+
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+
+  width: 12px;
+  height: 12px;
+
+  border: 3px solid #2b2d31;
+  border-radius: 50%;
+
+  background-color: #80848e;
+}
+
+.chat-avatar.com-status.online::after {
+  background-color: #23a559;
+}
+
+
+/* ========================================= */
+/* COMPOSITOR                                */
+/* ========================================= */
+
+.chat-compositor {
+  display: flex;
+  align-items: flex-end;
+
+  gap: 8px;
+
+  margin: 0 16px 24px;
+  padding: 4px 8px 4px 16px;
+
+  border-radius: 8px;
+
+  background-color: #383a40;
+}
+
+.chat-campo {
+  flex: 1;
+
+  min-height: 44px;
+  max-height: 200px;
+
+  padding: 11px 0;
+
+  border: none;
+  outline: none;
+
+  background-color: transparent;
+  color: #dbdee1;
+
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 22px;
+
+  resize: none;
+
+  field-sizing: content;
+}
+
+.chat-campo::placeholder {
+  color: #6d6f78;
+}
+
+.chat-botao-enviar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 36px;
+  height: 36px;
+
+  margin-bottom: 4px;
+
+  border: none;
+  border-radius: 6px;
+
+  background-color: #ffd900;
+  color: #1e1f22;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition:
+    opacity 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.chat-botao-enviar:disabled {
+  background-color: transparent;
+  color: #6d6f78;
+
+  cursor: default;
+}
+
+
+/* ========================================= */
+/* MEMBROS (coluna da direita)               */
+/* ========================================= */
+
+.chat-membros {
+  min-height: 0;
+
+  padding: 20px 8px;
+
+  background-color: #2b2d31;
+
+  overflow-y: auto;
+}
+
+.chat-membros .chat-secao-titulo {
+  padding-top: 16px;
+}
+
+.chat-membros .chat-secao-titulo:first-child {
+  padding-top: 0;
+}
+
+.chat-membro {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 6px 8px;
+
+  border-radius: 4px;
+
+  color: #dbdee1;
+
+  font-size: 15px;
+}
+
+.chat-membro:hover {
+  background-color: #35373c;
+}
+
+.chat-membro .chat-avatar {
+  width: 32px;
+  height: 32px;
+
+  font-size: 12px;
+}
+
+.chat-membro.offline {
+  opacity: 0.45;
+}
+
+
+/* ========================================= */
+/* RESPONSIVIDADE                            */
+/* ========================================= */
+
+@media (max-width: 1000px) {
+
+  .chat,
+  .chat.sem-membros {
+    grid-template-columns: 72px 200px minmax(0, 1fr);
+  }
+
+  .chat-membros {
+    display: none;
+  }
+
+  .chat-botao-icone {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+
+  .chat,
+  .chat.sem-membros {
+    grid-template-columns: 56px 150px minmax(0, 1fr);
+  }
+
+  .chat-turma-botao {
+    width: 40px;
+    height: 40px;
+
+    font-size: 13px;
+  }
+
+  .chat-conversa-topo p,
+  .chat-divisor-vertical {
+    display: none;
+  }
+
+  .chat-mensagem {
+    gap: 10px;
+  }
+
+  .chat-compositor {
+    margin: 0 8px 12px;
+  }
+}
