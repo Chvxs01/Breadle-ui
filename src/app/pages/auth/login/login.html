@@ -1,0 +1,55 @@
+<section class="login-page">
+
+  <img class="login-logo" src="logo.png" alt="Breadle">
+
+  <form class="login-card" [formGroup]="form" (ngSubmit)="entrar()" novalidate>
+
+    <div class="campo">
+      <label for="email">Email:</label>
+      <input id="email" type="email" formControlName="email" autocomplete="email"
+             [class.invalido]="invalido('email')">
+      @if (invalido('email')) {
+        <small class="msg-erro">Informe um e-mail válido.</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="senha">Senha:</label>
+      <input id="senha" type="password" formControlName="senha" autocomplete="current-password"
+             [class.invalido]="invalido('senha')">
+      @if (invalido('senha')) {
+        <small class="msg-erro">A senha deve ter pelo menos 6 caracteres.</small>
+      }
+    </div>
+
+    <div class="linha-opcoes">
+      <label class="lembrar">
+        <input type="checkbox" formControlName="lembrar">
+        <span>Lembrar de mim</span>
+      </label>
+      <a routerLink="/cadastro">Cadastrar-se</a>
+    </div>
+
+    @if (erro()) {
+      <p class="erro-geral" role="alert">{{ erro() }}</p>
+    }
+
+    <button class="btn-login" type="submit">Login</button>
+
+    <a class="esqueci" href="#" (click)="$event.preventDefault()">Esqueci minha senha</a>
+
+  </form>
+
+  <div class="redes">
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="bi bi-instagram"></i>
+    </a>
+    <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X">
+      <i class="bi bi-twitter-x"></i>
+    </a>
+    <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+      <i class="bi bi-facebook"></i>
+    </a>
+  </div>
+
+</section>

@@ -7,6 +7,8 @@ import { DetalhesColecao } from './pages/colecao/detalhes-colecao/detalhes-colec
 import { Turmas } from './pages/turmas/turmas';
 import { Metas } from './pages/metas/metas';
 import { Chat } from './pages/chat/chat';
+import { Login } from './pages/auth/login/login';
+import { Cadastro } from './pages/auth/cadastro/cadastro';
 
 export const routes: Routes = [
   { path: '', component: Home, pathMatch: 'full' },
@@ -17,6 +19,8 @@ export const routes: Routes = [
   { path: 'colecoes/:id', component: DetalhesColecao },
   { path: 'turmas', component: Turmas },
   { path: 'metas', component: Metas },
-  { path: 'chat', component: Chat},
+  { path: 'chat', component: Chat },
+  { path: 'login', component: Login },
+  { path: 'cadastro', component: Cadastro },
   { path: '**', redirectTo: '' },
 ];

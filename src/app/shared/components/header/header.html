@@ -48,9 +48,73 @@
       <i class="bi bi-bell" aria-hidden="true"></i>
     </button>
 
-    <button class="profile" type="button" aria-label="Perfil">
-      <i class="bi bi-person" aria-hidden="true"></i>
-    </button>
+   <div class="perfil-wrapper">
+  <button
+    class="profile"
+    type="button"
+    aria-label="Perfil"
+    (click)="abrirPerfil()"
+  >
+    <i class="bi bi-person" aria-hidden="true"></i>
+  </button>
+
+  @if (perfilAberto() && auth.logado()) {
+    <div class="menu-perfil">
+      <div class="menu-perfil-header">
+        <span>Perfil</span>
+        <button type="button" class="btn-fechar" (click)="fecharPerfil()" aria-label="Fechar">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <div class="perfil-atual">
+        <div class="avatar">
+          <i class="bi bi-person-fill"></i>
+        </div>
+        <span class="nome">{{ auth.usuario()?.nome }}</span>
+        <button type="button" class="btn-editar" aria-label="Editar perfil">
+          <i class="bi bi-pencil"></i>
+        </button>
+      </div>
+
+      <div class="outros-perfis">
+        <div class="perfil-item">
+          <div class="avatar pequeno">
+            <i class="bi bi-person-fill"></i>
+          </div>
+          <span>Marion</span>
+        </div>
+        <div class="perfil-item">
+          <div class="avatar pequeno">
+            <i class="bi bi-person-fill"></i>
+          </div>
+          <span>Quitéria</span>
+        </div>
+        <div class="perfil-item adicionar">
+          <div class="avatar pequeno adicionar">
+            <i class="bi bi-plus-lg"></i>
+          </div>
+          <span>Adicionar</span>
+        </div>
+      </div>
+
+      <div class="menu-opcoes">
+        <button type="button" class="opcao">
+          <i class="bi bi-gear"></i>
+          Configurações
+        </button>
+        <button type="button" class="opcao">
+          <i class="bi bi-person"></i>
+          Conta
+        </button>
+        <button type="button" class="opcao" (click)="sair()">
+          <i class="bi bi-box-arrow-right"></i>
+          Sair
+        </button>
+      </div>
+    </div>
+  }
+</div>
 
   </div>
 
@@ -113,5 +177,4 @@
     </section>
 
   }
-
 </header>
