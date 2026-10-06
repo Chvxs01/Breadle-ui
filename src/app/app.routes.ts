@@ -4,6 +4,7 @@ import { Livros } from './pages/livro/livros/livros';
 import { Detalhes } from './pages/livro/detalhes/detalhes';
 import { Turmas } from './pages/turmas/turmas';
 import { Metas } from './pages/metas/metas';
+import { Chat } from './pages/chat/chat';
 
 export const routes: Routes = [
   { path: '', component: Home, pathMatch: 'full' },
@@ -12,5 +13,6 @@ export const routes: Routes = [
   { path: 'livro/detalhes', redirectTo: 'livros', pathMatch: 'full' },
   { path: 'turmas', component: Turmas },
   { path: 'metas', component: Metas },
+  { path: 'chat', component: Chat},
   { path: '**', redirectTo: '' },
 ];

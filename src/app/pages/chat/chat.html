@@ -1,0 +1,210 @@
+<main class="chat" [class.sem-membros]="!painelMembrosAberto()">
+
+  <!-- ========================================= -->
+  <!-- TURMAS (estilo "servidores" do Discord)   -->
+  <!-- ========================================= -->
+
+  <nav class="chat-turmas" aria-label="Turmas">
+
+    @for (turma of turmas(); track turma.id) {
+
+    <button type="button" class="chat-turma-botao" [class.ativa]="turma.id === turmaSelecionadaId()"
+      [attr.aria-pressed]="turma.id === turmaSelecionadaId()" [attr.title]="turma.nome"
+      [attr.aria-label]="turma.nome" (click)="selecionarTurma(turma)">
+      {{ turma.sigla }}
+    </button>
+
+    }
+
+  </nav>
+
+
+  <!-- ========================================= -->
+  <!-- CANAIS                                    -->
+  <!-- ========================================= -->
+
+  <aside class="chat-canais">
+
+    @if (turmaAtual(); as turma) {
+
+    <header class="chat-canais-topo">
+      <h2>{{ turma.nome }}</h2>
+    </header>
+
+    <div class="chat-canais-lista">
+
+      <span class="chat-secao-titulo">Canais de texto</span>
+
+      @for (canal of turma.canais; track canal.id) {
+
+      <button type="button" class="chat-canal" [class.ativo]="canal.id === canalSelecionadoId()"
+        [attr.aria-current]="canal.id === canalSelecionadoId() ? 'true' : null" (click)="selecionarCanal(canal)">
+        <i class="bi bi-hash" aria-hidden="true"></i>
+        <span>{{ canal.nome }}</span>
+      </button>
+
+      }
+
+    </div>
+
+    }
+
+    <footer class="chat-usuario">
+
+      <div class="chat-avatar com-status online" [style.background-color]="usuarioAtual.cor">
+        {{ iniciais(usuarioAtual.nome) }}
+      </div>
+
+      <div class="chat-usuario-info">
+        <strong>{{ usuarioAtual.nome }}</strong>
+        <small>Online</small>
+      </div>
+
+    </footer>
+
+  </aside>
+
+
+  <!-- ========================================= -->
+  <!-- CONVERSA                                  -->
+  <!-- ========================================= -->
+
+  <section class="chat-conversa">
+
+    @if (canalAtual(); as canal) {
+
+    <header class="chat-conversa-topo">
+
+      <i class="bi bi-hash" aria-hidden="true"></i>
+      <h3>{{ canal.nome }}</h3>
+
+      <span class="chat-divisor-vertical"></span>
+
+      <p>{{ canal.descricao }}</p>
+
+      <button type="button" class="chat-botao-icone" [class.ativo]="painelMembrosAberto()"
+        [attr.aria-pressed]="painelMembrosAberto()" aria-label="Mostrar lista de membros"
+        (click)="alternarMembros()">
+        <i class="bi bi-people-fill" aria-hidden="true"></i>
+      </button>
+
+    </header>
+
+    }
+
+
+    <div class="chat-mensagens" #listaMensagens role="log" aria-live="polite">
+
+      @if (itensMensagens().length === 0) {
+
+      <div class="chat-vazio">
+        <i class="bi bi-chat-left-text" aria-hidden="true"></i>
+        <h4>Nenhuma mensagem por aqui ainda</h4>
+        <p>Seja a primeira pessoa a puxar assunto neste canal.</p>
+      </div>
+
+      }
+
+      @for (item of itensMensagens(); track item.mensagem.id) {
+
+      @if (item.novoDia) {
+      <div class="chat-divisor-dia">
+        <span>{{ item.rotuloDia }}</span>
+      </div>
+      }
+
+      <article class="chat-mensagem" [class.agrupada]="item.agrupada">
+
+        @if (item.agrupada) {
+
+        <time class="chat-hora-lateral">{{ item.hora }}</time>
+
+        } @else {
+
+        <div class="chat-avatar" [style.background-color]="item.autor.cor">
+          {{ iniciais(item.autor.nome) }}
+        </div>
+
+        }
+
+        <div class="chat-mensagem-corpo">
+
+          @if (!item.agrupada) {
+          <header>
+            <strong>{{ item.autor.nome }}</strong>
+            <time>{{ item.hora }}</time>
+          </header>
+          }
+
+          <p>{{ item.mensagem.texto }}</p>
+
+        </div>
+
+      </article>
+
+      }
+
+    </div>
+
+
+    <div class="chat-compositor">
+
+      <textarea class="chat-campo" rows="1" [value]="rascunho()"
+        [placeholder]="canalAtual() ? 'Conversar em #' + canalAtual()!.nome : 'Selecione um canal'"
+        [disabled]="!canalAtual()" aria-label="Escrever mensagem" (input)="aoDigitar($event)"
+        (keydown.enter)="aoPressionarEnter($event)"></textarea>
+
+      <button type="button" class="chat-botao-enviar" [disabled]="!podeEnviar()" aria-label="Enviar mensagem"
+        (click)="enviar()">
+        <i class="bi bi-send-fill" aria-hidden="true"></i>
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================= -->
+  <!-- MEMBROS                                   -->
+  <!-- ========================================= -->
+
+  @if (painelMembrosAberto()) {
+
+  <aside class="chat-membros" aria-label="Membros da turma">
+
+    @if (membrosOnline().length > 0) {
+
+    <span class="chat-secao-titulo">Online — {{ membrosOnline().length }}</span>
+
+    @for (membro of membrosOnline(); track membro.id) {
+    <div class="chat-membro">
+      <div class="chat-avatar com-status online" [style.background-color]="membro.cor">
+        {{ iniciais(membro.nome) }}
+      </div>
+      <span>{{ membro.nome }}</span>
+    </div>
+    }
+
+    }
+
+    @if (membrosOffline().length > 0) {
+
+    <span class="chat-secao-titulo">Offline — {{ membrosOffline().length }}</span>
+
+    @for (membro of membrosOffline(); track membro.id) {
+    <div class="chat-membro offline">
+      <div class="chat-avatar com-status" [style.background-color]="membro.cor">
+        {{ iniciais(membro.nome) }}
+      </div>
+      <span>{{ membro.nome }}</span>
+    </div>
+    }
+
+    }
+
+  </aside>
+
+  }
+
+</main>
+
