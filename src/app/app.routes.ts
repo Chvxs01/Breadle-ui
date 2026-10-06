@@ -18,7 +18,8 @@ export const routes: Routes = [
   { path: 'colecoes/:id', component: DetalhesColecao },
   { path: 'turmas', component: Turmas },
   { path: 'metas', component: Metas },
-  { path: 'chat', component: Chat},
-  { path: 'atividades', component: Atividades},
+  { path: 'chat', component: Chat },
+  { path: 'login', component: Login },
+  { path: 'cadastro', component: Cadastro },
   { path: '**', redirectTo: '' },
 ];

@@ -310,6 +310,167 @@
   font-size: 15px;
 }
 
+
+  /* =========================
+   MENU DE PERFIL
+   ========================= */
+
+.perfil-wrapper {
+  position: relative;
+}
+
+.menu-perfil {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 1100;
+
+  width: 280px;
+  padding: 16px;
+
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+
+  color: #fff;
+}
+
+.menu-perfil-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ccc;
+}
+
+.btn-fechar {
+  background: transparent;
+  border: none;
+  color: #aaa;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.btn-fechar:hover {
+  color: #fff;
+}
+
+.perfil-atual {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  margin-bottom: 16px;
+  background-color: #2a2a2a;
+  border-radius: 10px;
+}
+
+.perfil-atual .avatar {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #dcd0ff;
+  color: #542aa8;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.perfil-atual .nome {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.btn-editar {
+  background: transparent;
+  border: none;
+  color: #aaa;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.btn-editar:hover {
+  color: #ffd900;
+}
+
+.outros-perfis {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 0 4px;
+}
+
+.perfil-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.perfil-item:hover {
+  color: #fff;
+}
+
+.avatar.pequeno {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #dcd0ff;
+  color: #542aa8;
+  font-size: 18px;
+}
+
+.avatar.pequeno.adicionar {
+  background-color: transparent;
+  border: 1px dashed #666;
+  color: #aaa;
+}
+
+.menu-opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.menu-opcoes .opcao {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: #ddd;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.menu-opcoes .opcao:hover {
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.menu-opcoes .opcao i {
+  font-size: 16px;
+  width: 20px;
+}
+
 @media (max-width: 768px) {
 
   .painel-busca {
@@ -319,5 +480,4 @@
   .lista-resultados {
     padding: 16px 20px;
   }
-
 }
