@@ -311,6 +311,7 @@
 }
 
 
+  
   /* =========================
    MENU DE PERFIL
    ========================= */
@@ -632,9 +633,9 @@
   .lista-resultados {
     padding: 16px 20px;
   }
-
-  .menu-perfil {
+.menu-perfil {
     width: 320px;
     right: -10px;
   }
+
 }

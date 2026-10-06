@@ -54,11 +54,9 @@
         type="button"
         aria-label="Perfil"
         (click)="abrirPerfil()">
-        <i class="bi bi-person" aria-hidden="true"></i>
-        </button>
-    </div>
 
-     @if (perfilAberto() && auth.logado()) {
+
+@if (perfilAberto() && auth.logado()) {
     <div class="menu-perfil">
       <div class="menu-perfil-header">
         <span>Perfil</span>
@@ -116,6 +114,7 @@
   }
 </div>
   
+  </div>
 
   @if (buscaAberta()) {
 
@@ -176,5 +175,4 @@
     </section>
 
   }
-
 </header>
