@@ -30,14 +30,29 @@ describe('CardLivro', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should link to the book details with its id', () => {
+  it('should link to the book details with its id and title as label', () => {
     const link = (fixture.nativeElement as HTMLElement).querySelector('a');
     expect(link?.getAttribute('href')).toBe('/livro/detalhes/3');
+    expect(link?.getAttribute('aria-label')).toBe('Livro de teste');
   });
 
-  it('should show the title and author', () => {
-    const texto = (fixture.nativeElement as HTMLElement).textContent;
-    expect(texto).toContain('Livro de teste');
-    expect(texto).toContain('Autora Teste');
+  it('should emit destacar when the mouse enters', () => {
+    let emitido: Livro | undefined;
+    fixture.componentInstance.destacar.subscribe(l => (emitido = l));
+
+    const link = (fixture.nativeElement as HTMLElement).querySelector('a');
+    link?.dispatchEvent(new Event('mouseenter'));
+
+    expect(emitido?.id).toBe(3);
+  });
+
+  it('should show a lock only when the book is unavailable', async () => {
+    const el = fixture.nativeElement as HTMLElement;
+    expect(el.querySelector('.cadeado')).toBeNull();
+
+    fixture.componentRef.setInput('livro', { ...livro, status: 'indisponível' as const });
+    await fixture.whenStable();
+
+    expect(el.querySelector('.cadeado')).toBeTruthy();
   });
 });

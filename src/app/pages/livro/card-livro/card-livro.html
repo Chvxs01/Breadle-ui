@@ -1,19 +1,14 @@
-<main class="pagina-livros">
+<a
+  class="livro-card"
+  [class.ativo]="ativo()"
+  [routerLink]="['/livro/detalhes', livro().id]"
+  [attr.aria-label]="livro().titulo + (indisponivel() ? ' (indisponível)' : '')"
+  (mouseenter)="destacar.emit(livro())"
+  (focus)="destacar.emit(livro())"
+>
+  <img [src]="livro().capaUrl" alt="">
 
-  <h1>Livros</h1>
-
-  <div class="livro-card">
-
-    <a class="livro-card" [routerLink]="['/livro/detalhes', livro().id]">
-
-      <img [src]="livro().capaUrl" alt="">
-
-      <h2>{{ livro().titulo }}</h2>
-
-      <p>{{ livro().autor }}</p>
-
-    </a>
-    
-  </div>
-
-</main>
+  @if (indisponivel()) {
+    <i class="bi bi-lock-fill cadeado" aria-hidden="true"></i>
+  }
+</a>

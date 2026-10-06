@@ -1,15 +1,75 @@
-<app-container>
+<main class="pagina-livros">
 
-  <main class="pagina-livros">
+  @if (livroAtivo(); as livro) {
 
-    <h1>Livros</h1>
+    <section class="destaque">
 
-    <div class="grade-livros">
+      <div class="destaque-info">
+
+        <span class="autor">{{ livro.autor }}</span>
+
+        <h1>{{ livro.titulo }}</h1>
+
+        <div class="dados">
+          @if (livro.dataPublicacao) {
+            <span>{{ livro.dataPublicacao.getFullYear() }}</span>
+          }
+          @if (livro.paginas) {
+            <span>
+              <i class="bi bi-bookmark-fill" aria-hidden="true"></i>
+              {{ livro.paginas }} páginas
+            </span>
+          }
+        </div>
+
+        <p class="descricao">{{ livro.descricao }}</p>
+
+        <a class="ver-detalhes" [routerLink]="['/livro/detalhes', livro.id]">
+          Ver detalhes
+        </a>
+
+      </div>
+
+      <div class="destaque-imagem">
+        @if (livro.bannerUrl) {
+          <img class="banner" [src]="livro.bannerUrl" alt="">
+        } @else {
+          <img class="fundo" [src]="livro.capaUrl" alt="">
+          <img class="capa" [src]="livro.capaUrl" [alt]="'Capa de ' + livro.titulo">
+        }
+      </div>
+
+    </section>
+
+  }
+
+  <section class="carrossel" aria-label="Carrossel de livros">
+
+    <button
+      class="seta anterior"
+      type="button"
+      aria-label="Livros anteriores"
+      (click)="rolar(-1)">
+      <i class="bi bi-chevron-left" aria-hidden="true"></i>
+    </button>
+
+    <div class="trilho" #trilho>
       @for (livro of livros; track livro.id) {
-        <app-card-livro [livro]="livro" />
+        <app-card-livro
+          [livro]="livro"
+          [ativo]="livroAtivo()?.id === livro.id"
+          (destacar)="definirDestaque($event)" />
       }
     </div>
 
-  </main>
+    <button
+      class="seta proximo"
+      type="button"
+      aria-label="Próximos livros"
+      (click)="rolar(1)">
+      <i class="bi bi-chevron-right" aria-hidden="true"></i>
+    </button>
 
-</app-container>
+  </section>
+
+</main>

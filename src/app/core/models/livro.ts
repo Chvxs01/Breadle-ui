@@ -8,6 +8,7 @@ export interface Livro {
   dataPublicacao?: Date;
   paginas?: number;
   capaUrl: string;
+  bannerUrl?: string;
   idioma?: string;
-  status?: string;
+  status?: 'disponível' | 'indisponível';
 }

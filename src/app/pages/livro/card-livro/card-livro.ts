@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Livro } from '../../../core/models/livro';
 
@@ -10,4 +10,9 @@ import { Livro } from '../../../core/models/livro';
 })
 export class CardLivro {
   livro = input.required<Livro>();
+  ativo = input<boolean>(false);
+
+  destacar = output<Livro>();
+
+  indisponivel = computed(() => this.livro().status === 'indisponível');
 }
