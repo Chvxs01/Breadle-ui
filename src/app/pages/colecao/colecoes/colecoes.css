@@ -1,0 +1,50 @@
+:host {
+  display: block;
+  min-height: calc(100vh - 90px);
+  background-color: #000;
+  color: #fff;
+}
+
+.pagina-colecoes {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  padding: 10px 0 40px;
+}
+
+.grupo h2 {
+  margin: 0 0 12px;
+  padding: 0 24px;
+
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Linha de coleções com rolagem horizontal */
+.trilho {
+  display: flex;
+  gap: 30px;
+
+  padding: 4px 24px 14px;
+
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+
+  scrollbar-width: thin;
+  scrollbar-color: #444 #000;
+}
+
+.trilho app-card-colecao {
+  scroll-snap-align: start;
+}
+
+@media (max-width: 768px) {
+
+  .grupo h2,
+  .trilho {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+}

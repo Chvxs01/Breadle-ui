@@ -1,0 +1,15 @@
+<a
+  class="colecao-card"
+  [routerLink]="['/colecoes', colecao().id]"
+  [attr.aria-label]="colecao().nome + ' (' + colecao().totalLivros + ' livros)'"
+>
+
+  <div class="capas">
+    @for (capa of colecao().capas; track capa) {
+      <img [src]="capa" alt="">
+    }
+  </div>
+
+  <span class="nome">{{ colecao().nome }}</span>
+
+</a>

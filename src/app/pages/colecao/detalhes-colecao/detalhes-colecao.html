@@ -1,0 +1,41 @@
+@if (colecao(); as item) {
+
+  <main class="pagina-colecao">
+
+    <a class="voltar" routerLink="/colecoes">
+      <i class="bi bi-chevron-left" aria-hidden="true"></i>
+      Coleções
+    </a>
+
+    <header class="cabecalho">
+      <span class="categoria">{{ item.categoria }}</span>
+      <h1>{{ item.nome }}</h1>
+      <p class="meta">
+        {{ item.autor }} · {{ item.livros.length }}
+        {{ item.livros.length === 1 ? 'livro' : 'livros' }}
+      </p>
+      <p class="descricao">{{ item.descricao }}</p>
+    </header>
+
+    <section class="livros" aria-label="Livros da coleção">
+      @for (livro of item.livros; track livro.id) {
+        <a class="livro" [routerLink]="['/livro/detalhes', livro.id]">
+          <img [src]="livro.capaUrl" [alt]="'Capa de ' + livro.titulo">
+          <span class="titulo">{{ livro.titulo }}</span>
+          @if (livro.dataPublicacao) {
+            <span class="ano">{{ livro.dataPublicacao.getFullYear() }}</span>
+          }
+        </a>
+      }
+    </section>
+
+  </main>
+
+} @else {
+
+  <main class="nao-encontrado">
+    <p>Coleção não encontrada.</p>
+    <a routerLink="/colecoes">Voltar para as coleções</a>
+  </main>
+
+}

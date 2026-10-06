@@ -1,0 +1,69 @@
+:host {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.colecao-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  width: 240px;
+
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Montagem com as capas lado a lado, uma sobre a outra */
+.capas {
+  display: flex;
+  height: 140px;
+
+  overflow: hidden;
+  background-color: #111;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.capas img {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: top center;
+
+  /* cada capa cobre um pedaço da anterior */
+  margin-left: -14%;
+  box-shadow: -6px 0 14px rgba(0, 0, 0, 0.55);
+}
+
+.capas img:first-child {
+  margin-left: 0;
+  box-shadow: none;
+}
+
+.nome {
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+
+  transition: color 0.2s ease;
+}
+
+.colecao-card:hover .capas,
+.colecao-card:focus-visible .capas {
+  transform: scale(1.04);
+  box-shadow: 0 0 0 2px #fff;
+}
+
+.colecao-card:hover .nome,
+.colecao-card:focus-visible .nome {
+  color: #ffd900;
+}
+
+.colecao-card:focus-visible {
+  outline: none;
+}
