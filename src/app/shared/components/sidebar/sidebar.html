@@ -26,11 +26,10 @@
       <span>Metas</span>
     </a>
 
-    <button class="item-menu" type="button">
-      <i class="bi bi-chat-left-text" aria-hidden="true"></i>
-      <span>Chat</span>
-    </button>
-
+   <a class="item-menu" routerLink="/chat" routerLinkActive="ativo" (click)="fechar.emit()">
+  <i class="bi bi-chat-left-text" aria-hidden="true"></i>
+  <span>Chat</span>
+</a>
     <button class="item-menu" type="button">
       <i class="bi bi-clipboard" aria-hidden="true"></i>
       <span>Atividades</span>
