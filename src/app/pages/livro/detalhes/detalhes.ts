@@ -17,7 +17,7 @@ export class Detalhes {
     subtitulo: '',
     descricao: 'Harry Potter e a Pedra Filosofal acompanha um garoto órfão que descobre ser um bruxo aos 11 anos.',
     dataPublicacao: new Date(1997, 5, 26),
-    capaUrl: 'harry-potter.jpeg',
+    capaUrl: '/livros/harry-potter.jpeg',
     idioma: 'Português',
     status: 'disponível'
   };
