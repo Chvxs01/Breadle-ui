@@ -1,0 +1,143 @@
+:host {
+  display: block;
+}
+
+.login-page {
+  min-height: calc(100vh - 90px);
+  padding: 24px 16px 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  background: linear-gradient(90deg, #000 30%, #1a1adb 100%);
+}
+
+.login-logo {
+  width: 220px;
+  max-width: 60%;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 375px;
+  padding: 36px 48px 28px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.campo label {
+  font-size: 12px;
+}
+
+.campo input {
+  width: 100%;
+  height: 28px;
+  padding: 0 8px;
+
+  border: none;
+  outline: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.campo input:focus {
+  box-shadow: 0 0 0 2px #ffd900;
+}
+
+.campo input.invalido {
+  box-shadow: 0 0 0 2px #ff6b6b;
+}
+
+.msg-erro,
+.erro-geral {
+  color: #ffb3b3;
+  font-size: 12px;
+  margin: 0;
+}
+
+.linha-opcoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.linha-opcoes a,
+.esqueci {
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.linha-opcoes a:hover,
+.esqueci:hover {
+  color: #ffd900;
+}
+
+.lembrar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.btn-login {
+  height: 32px;
+  margin-top: 6px;
+
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.35);
+
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-login:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.esqueci {
+  align-self: center;
+}
+
+.redes {
+  display: flex;
+  gap: 60px;
+  font-size: 22px;
+}
+
+.redes a {
+  color: #fff;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.redes a:hover {
+  color: #ffd900;
+  transform: scale(1.1);
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 28px 24px 24px;
+  }
+  .redes {
+    gap: 40px;
+  }
+}

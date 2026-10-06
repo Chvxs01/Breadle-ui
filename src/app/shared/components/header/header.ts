@@ -1,5 +1,17 @@
-import { Component, output } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, output, inject, signal, computed } from '@angular/core';
+import { RouterLink, RouterLinkActive, Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { LivroService } from '../../../core/services/livro-service';
+import { Livro } from '../../../core/models/livro';
+import { contem, destacar, Trecho } from '../../../core/utils/busca';
+import { AuthService } from '../../../core/services/auth-service';
+
+interface ResultadoBusca {
+  livro: Livro;
+  titulo: Trecho[];
+  autor: Trecho[] | null;
+}
 
 @Component({
   selector: 'app-header',
@@ -12,11 +24,12 @@ export class Header {
   menuClicado = output<void>();
 
   private livros = inject(LivroService).listar();
+  auth = inject(AuthService);
+  private router = inject(Router);
 
   termo = signal('');
-
-  // Livro sob o mouse na lista (usado para realçar a capa correspondente)
   livroEmFoco = signal<number | null>(null);
+  perfilAberto = signal(false);
 
   buscaAberta = computed(() => this.termo().trim().length > 0);
 
@@ -37,13 +50,15 @@ export class Header {
   });
 
   constructor() {
-    // Ao navegar para qualquer página (ex.: detalhes do livro), fecha a busca
     inject(Router).events
       .pipe(
         filter(evento => evento instanceof NavigationEnd),
         takeUntilDestroyed()
       )
-      .subscribe(() => this.limparBusca());
+      .subscribe(() => {
+        this.limparBusca();
+        this.perfilAberto.set(false);
+      });
   }
 
   aoDigitar(evento: Event): void {
@@ -57,7 +72,27 @@ export class Header {
 
   abrirMenu(): void {
     this.limparBusca();
+    this.perfilAberto.set(false);
     this.menuClicado.emit();
   }
 
+  abrirPerfil(): void {
+  if (!this.auth.logado()) {
+    this.router.navigateByUrl('/login');
+    return;
+  }
+
+  this.perfilAberto.update(v => !v);
+  this.limparBusca();
+}
+
+  fecharPerfil(): void {
+    this.perfilAberto.set(false);
+  }
+
+  sair(): void {
+    this.auth.sair();
+    this.perfilAberto.set(false);
+    this.router.navigateByUrl('/');
+  }
 }

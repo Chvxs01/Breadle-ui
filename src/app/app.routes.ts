@@ -8,6 +8,8 @@ import { Turmas } from './pages/turmas/turmas';
 import { Metas } from './pages/metas/metas';
 import { Chat } from './pages/chat/chat';
 import { Atividades } from './pages/atividades/atividades';
+import { Login } from './pages/auth/login/login';
+import { Cadastro } from './pages/auth/cadastro/cadastro';
 
 export const routes: Routes = [
   { path: '', component: Home, pathMatch: 'full' },
@@ -20,5 +22,7 @@ export const routes: Routes = [
   { path: 'metas', component: Metas },
   { path: 'chat', component: Chat},
   { path: 'atividades', component: Atividades},
+  { path: 'login', component: Login },
+  { path: 'cadastro', component: Cadastro },
   { path: '**', redirectTo: '' },
 ];
