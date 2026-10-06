@@ -1,0 +1,173 @@
+:host {
+  display: block;
+  background-color: #000;
+  color: #fff;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 40px 0 20px;
+}
+
+h2 {
+  margin: 0 0 16px;
+  font-size: 20px;
+}
+
+
+/* HERO */
+
+.hero {
+  text-align: center;
+  padding: 40px 0 10px;
+}
+
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: 36px;
+}
+
+.hero p {
+  max-width: 520px;
+  margin: 0 auto 24px;
+  color: #ccc;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.botao-principal {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 8px;
+  background-color: #ffd900;
+  color: #000;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.botao-principal:hover {
+  transform: scale(1.05);
+}
+
+
+/* CONTINUAR LENDO */
+
+.continuar-card {
+  display: flex;
+  gap: 20px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #1f1f1f;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.continuar-card:hover {
+  background-color: #2a2a2a;
+}
+
+.continuar-card img {
+  width: 90px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.continuar-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.continuar-info h3 {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+
+.continuar-info p {
+  margin: 0 0 14px;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.continuar-info small {
+  margin-top: 8px;
+  color: #999;
+  font-size: 12px;
+}
+
+.barra {
+  width: 100%;
+  height: 8px;
+  background-color: #3b393a;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progresso {
+  height: 100%;
+  background-color: #ffd900;
+  border-radius: 10px;
+}
+
+
+/* ATALHOS */
+
+.atalhos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.atalho {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 8px;
+  background-color: #1f1f1f;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.atalho:hover {
+  background-color: #2a2a2a;
+}
+
+.atalho i {
+  font-size: 28px;
+  color: #ffd900;
+}
+
+.atalho strong,
+.atalho span {
+  display: block;
+}
+
+.atalho span {
+  margin-top: 2px;
+  color: #aaa;
+  font-size: 13px;
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 768px) {
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .atalhos-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

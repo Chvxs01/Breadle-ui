@@ -1,0 +1,62 @@
+<app-container>
+
+  <main class="home">
+
+    <section class="hero">
+      <h1>Bem-vindo ao Breadle</h1>
+      <p>
+        Uma plataforma criada para incentivar a leitura
+        e facilitar o acesso aos livros.
+      </p>
+      <a class="botao-principal" routerLink="/livros">Explorar livros</a>
+    </section>
+
+    <section class="continuar">
+      <h2>Continue de onde parou</h2>
+
+      <a class="continuar-card" routerLink="/livro/detalhes">
+        <img
+          [src]="leituraAtual.capaUrl"
+          [alt]="'Capa de ' + leituraAtual.titulo">
+
+        <div class="continuar-info">
+          <h3>{{ leituraAtual.titulo }}</h3>
+          <p>{{ leituraAtual.autor }}</p>
+
+          <div
+            class="barra"
+            role="progressbar"
+            aria-label="Progresso da leitura"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            [attr.aria-valuenow]="progresso()">
+            <div class="progresso" [style.width.%]="progresso()"></div>
+          </div>
+
+          <small>
+            Página {{ leituraAtual.paginaAtual }} de {{ leituraAtual.totalPaginas }}
+            ({{ progresso() }}%)
+          </small>
+        </div>
+      </a>
+    </section>
+
+    <section class="atalhos">
+      <h2>Acesso rápido</h2>
+
+      <div class="atalhos-grid">
+        @for (atalho of atalhos; track atalho.rota) {
+          <a class="atalho" [routerLink]="atalho.rota">
+            <i class="bi" [class]="'bi ' + atalho.icone" aria-hidden="true"></i>
+            <div>
+              <strong>{{ atalho.titulo }}</strong>
+              <span>{{ atalho.descricao }}</span>
+            </div>
+          </a>
+        }
+      </div>
+    </section>
+
+  </main>
+
+</app-container>
