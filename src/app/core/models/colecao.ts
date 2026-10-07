@@ -1,6 +1,6 @@
 import { Livro } from './livro';
 
-export type CategoriaColecao = 'Fantasia' | 'Romance';
+export type CategoriaColecao = 'Fantasia' | 'Romance' | 'Ficção Científica' | 'Suspense';
 
 export interface Colecao {
   id: number;

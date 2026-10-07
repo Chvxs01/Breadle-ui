@@ -32,6 +32,41 @@ export class ColecaoService {
       autor: 'Jenny Han',
       descricao: 'A história de Lara Jean, uma garota que escreve cartas para seus antigos amores e vê sua vida mudar quando elas são enviadas.',
       categoria: 'Romance'
+    },
+        {
+      id: 4,
+      nome: 'Coleção Mistborn',
+      autor: 'Brandon Sanderson',
+      descricao: 'Em um mundo coberto de cinzas e governado por um imortal, uma ladra e sua gangue descobrem o poder da alomancia e tentam derrubar um império de mil anos.',
+      categoria: 'Fantasia'
+    },
+    {
+      id: 5,
+      nome: 'Coleção Jogos Vorazes',
+      autor: 'Suzanne Collins',
+      descricao: 'Em uma nação futurista dividida em distritos, jovens são forçados a lutar até a morte em um espetáculo televisionado, e uma sobrevivente se torna o rosto de uma rebelião.',
+      categoria: 'Ficção Científica'
+    },
+    {
+      id: 6,
+      nome: 'Coleção A Seleção',
+      autor: 'Kiera Cass',
+      descricao: 'Em um reino dividido em castas, trinta e cinco garotas disputam o coração do príncipe herdeiro em uma competição que pode mudar a vida de todas elas.',
+      categoria: 'Romance'
+    },
+    {
+      id: 7,
+      nome: 'Coleção Sherlock Holmes',
+      autor: 'Arthur Conan Doyle',
+      descricao: 'Os primeiros romances do detetive mais famoso da literatura, narrados pelo fiel doutor Watson, com crimes misteriosos resolvidos pela lógica e pela observação.',
+      categoria: 'Suspense'
+    },
+    {
+      id: 8,
+      nome: 'Coleção As Crônicas de Nárnia',
+      autor: 'C.S. Lewis',
+      descricao: 'Os primeiros livros da série em que crianças atravessam portais para o reino mágico de Nárnia, onde animais falam e o leão Aslam defende o bem. Reúne os três primeiros títulos em ordem de publicação.',
+      categoria: 'Fantasia'
     }
   ];
 
