@@ -53,10 +53,12 @@
         class="profile"
         type="button"
         aria-label="Perfil"
+        [attr.aria-expanded]="perfilAberto()"
         (click)="abrirPerfil()">
+        <i class="bi bi-person" aria-hidden="true"></i>
+      </button>
 
-
-@if (perfilAberto() && auth.logado()) {
+      @if (perfilAberto() && auth.logado()) {
     <div class="menu-perfil">
       <div class="menu-perfil-header">
         <span>Perfil</span>

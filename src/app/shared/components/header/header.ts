@@ -50,7 +50,7 @@ export class Header {
   });
 
   constructor() {
-    inject(Router).events
+    this.router.events
       .pipe(
         filter(evento => evento instanceof NavigationEnd),
         takeUntilDestroyed()
@@ -77,14 +77,14 @@ export class Header {
   }
 
   abrirPerfil(): void {
-  if (!this.auth.logado()) {
-    this.router.navigateByUrl('/login');
-    return;
-  }
+    if (!this.auth.logado()) {
+      this.router.navigateByUrl('/login');
+      return;
+    }
 
-  this.perfilAberto.update(v => !v);
-  this.limparBusca();
-}
+    this.perfilAberto.update(aberto => !aberto);
+    this.limparBusca();
+  }
 
   fecharPerfil(): void {
     this.perfilAberto.set(false);

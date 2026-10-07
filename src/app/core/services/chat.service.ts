@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Signal, signal } from "@angular/core";
+import { signal } from "@angular/core";
 import { MensagemChat, TurmaChat, UsuarioChat } from "../models/chat.models";
 
 const minutosAtras = (minutos: number): Date => new Date(Date.now() - minutos * 60_000);

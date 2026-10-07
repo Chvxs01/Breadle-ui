@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { afterNextRender } from '@angular/core';
 import { computed } from '@angular/core';
-import { Inject, inject } from '@angular/core';
-import { Signal, signal } from '@angular/core';
-import { ViewChild, viewChild } from '@angular/core';
+import { inject } from '@angular/core';
+import { signal } from '@angular/core';
+import { viewChild } from '@angular/core';
 import { CanalChat, MensagemChat, TurmaChat, UsuarioChat } from '../../core/models/chat.models';
 import { ChatService } from '../../core/services/chat.service';
 
