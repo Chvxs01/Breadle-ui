@@ -51,7 +51,7 @@ export class Turmas {
       membros: 13,
       livrosConcluidos: 69,
       participacao: 72,
-      metaTurma: 800, // TODO: confirmar, pode ser 80
+      metaTurma: 80,
       metaMensal: 100
     }
   ]);

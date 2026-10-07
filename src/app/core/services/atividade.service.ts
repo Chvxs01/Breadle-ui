@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { computed } from "@angular/core";
-import { Signal, signal } from "@angular/core";
+import { signal } from "@angular/core";
 import { Atividade } from "../models/atividade.models";
 
 @Injectable({ providedIn: 'root' })

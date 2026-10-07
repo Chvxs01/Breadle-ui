@@ -9,6 +9,8 @@ import { Metas } from './pages/metas/metas';
 import { Chat } from './pages/chat/chat';
 import { Notificacoes } from './pages/notificacoes/notificacoes';
 import { Atividades } from './pages/atividades/atividades';
+import { Cadastro } from './pages/auth/cadastro/cadastro';
+import { Login } from './pages/auth/login/login';
 
 export const routes: Routes = [
   { path: '', component: Home, pathMatch: 'full' },
@@ -22,5 +24,7 @@ export const routes: Routes = [
   { path: 'chat', component: Chat},
   { path: 'atividades', component: Atividades},
   { path: "notificacoes", component: Notificacoes},
+  { path: 'login', component: Login },
+  { path: 'cadastro', component: Cadastro },
   { path: '**', redirectTo: '' },
 ];

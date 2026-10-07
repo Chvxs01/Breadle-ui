@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { Inject, inject } from '@angular/core';
-import { Signal, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Atividade } from '../../core/models/atividade.models';
 import { AtividadesService } from '../../core/services/atividade.service';
 

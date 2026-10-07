@@ -20,17 +20,17 @@ footer {
   padding: 45px 0;
 }
 
-.footer h2 {
+footer h2 {
   margin: 0 0 12px;
   font-size: 24px;
 }
 
-.footer h3 {
+footer h3 {
   margin: 0 0 15px;
   font-size: 16px;
 }
 
-.footer p {
+footer p {
   margin: 0;
   color: #c5c5c5;
   font-size: 14px;
