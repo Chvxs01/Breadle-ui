@@ -42,11 +42,24 @@
       <span>Criar</span>
     </button>
 
-    <button class="item-menu" type="button" (click)="fechar.emit()">
-      <i class="bi bi-bell" aria-hidden="true"></i>
-      <span>Notificações</span>
-    </button>
+   <a
+     class="item-menu item-notificacoes"
+     routerLink="/notificacoes"
+     routerLinkActive="ativo"
+     (click)="fechar.emit()"
+   >
+     <span class="icone-com-badge">
+       <i class="bi bi-bell" aria-hidden="true"></i>
+       @if (contadorNotificacoes() > 0) {
+         <span class="badge-contador"
+               [attr.aria-label]="contadorNotificacoes() + ' não lidas'">
+           {{ contadorNotificacoes() > 9 ? '9+' : contadorNotificacoes() }}
+         </span>
+       }
+     </span>
+     <span>Notificações</span>
+   </a>
     
- </nav>
+  </nav>
 
 </aside>

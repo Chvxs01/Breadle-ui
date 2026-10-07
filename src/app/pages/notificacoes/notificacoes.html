@@ -1,0 +1,62 @@
+<main class="pagina-notificacoes">
+
+  <section class="conteudo-notificacoes">
+
+    <header class="cabecalho-pagina">
+      <div>
+        <h1>Notificações</h1>
+        <p>
+          @if (contadorNaoLidas() > 0) {
+            Você tem {{ contadorNaoLidas() }} não lida{{ contadorNaoLidas() === 1 ? '' : 's' }}
+          } @else {
+            Tudo em dia
+          }
+        </p>
+      </div>
+
+      @if (contadorNaoLidas() > 0) {
+        <button type="button" class="botao-marcar-todas" (click)="marcarTodasComoLidas()">
+          Marcar todas como lidas
+        </button>
+      }
+    </header>
+
+    <section class="lista-notificacoes">
+
+      @for (notif of notificacoes(); track trackById($index, notif)) {
+
+        <article
+          class="card-notificacao"
+          [class.nao-lida]="!notif.lida"
+          (click)="marcarComoLida(notif.id)"
+        >
+          <div class="icone-tipo" [attr.data-tipo]="notif.tipo">
+            <i class="bi {{ iconePorTipo(notif.tipo) }}" aria-hidden="true"></i>
+          </div>
+
+          <div class="conteudo">
+            <div class="topo">
+              <h2>{{ notif.titulo }}</h2>
+              <time>{{ tempoRelativo(notif.criadaEm) }}</time>
+            </div>
+            <p>{{ notif.mensagem }}</p>
+          </div>
+
+          @if (!notif.lida) {
+            <span class="ponto-nao-lida" aria-label="Não lida"></span>
+          }
+        </article>
+
+      } @empty {
+        <div class="vazio">
+          <i class="bi bi-bell-slash" aria-hidden="true"></i>
+          <p>Nenhuma notificação por enquanto.</p>
+        </div>
+      }
+
+    </section>
+
+  </section>
+
+</main>
+

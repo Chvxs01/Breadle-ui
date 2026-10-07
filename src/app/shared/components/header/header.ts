@@ -13,6 +13,7 @@ interface ResultadoBusca {
   autor: Trecho[] | null;
 }
 
+
 @Component({
   selector: 'app-header',
   imports: [RouterLink, RouterLinkActive],

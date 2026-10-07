@@ -1,0 +1,188 @@
+:host {
+  display: block;
+}
+
+.pagina-notificacoes {
+  min-height: calc(100vh - 64px);
+  background-color: #000;
+  color: #fff;
+  padding: 25px 40px 60px;
+}
+
+.conteudo-notificacoes {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ========================================= */
+/* CABEÇALHO                                 */
+/* ========================================= */
+
+.cabecalho-pagina {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  gap: 16px;
+}
+
+.cabecalho-pagina h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.cabecalho-pagina p {
+  margin: 6px 0 0;
+  color: #aaa;
+  font-size: 13px;
+}
+
+.botao-marcar-todas {
+  border: none;
+  background-color: #3b393a;
+  color: #ffd900;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+
+.botao-marcar-todas:hover {
+  background-color: #4a4849;
+}
+
+/* ========================================= */
+/* LISTA                                     */
+/* ========================================= */
+
+.lista-notificacoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-notificacao {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: 0.2s;
+  position: relative;
+}
+
+.card-notificacao:hover {
+  background-color: #2a2a2a;
+}
+
+.card-notificacao.nao-lida {
+  border-left: 3px solid #ffd900;
+  background-color: #252525;
+}
+
+.icone-tipo {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3b393a;
+  border-radius: 10px;
+  color: #ffd900;
+  font-size: 18px;
+}
+
+.icone-tipo[data-tipo='chat'] {
+  color: #64b5f6;
+}
+
+.icone-tipo[data-tipo='turma'] {
+  color: #81c784;
+}
+
+.icone-tipo[data-tipo='atividade'] {
+  color: #ffb74d;
+}
+
+.icone-tipo[data-tipo='sistema'] {
+  color: #ce93d8;
+}
+
+.conteudo {
+  flex: 1;
+  min-width: 0;
+}
+
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.topo h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.topo time {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: #888;
+}
+
+.conteudo p {
+  margin: 0;
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.4;
+}
+
+.ponto-nao-lida {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #ffd900;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+/* ========================================= */
+/* VAZIO                                     */
+/* ========================================= */
+
+.vazio {
+  text-align: center;
+  padding: 60px 20px;
+  color: #777;
+}
+
+.vazio i {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.vazio p {
+  margin: 0;
+  font-size: 14px;
+}
+
+@media (max-width: 640px) {
+  .pagina-notificacoes {
+    padding: 20px 16px 40px;
+  }
+
+  .cabecalho-pagina {
+    flex-direction: column;
+  }
+}
