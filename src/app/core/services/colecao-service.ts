@@ -33,7 +33,7 @@ export class ColecaoService {
       descricao: 'A história de Lara Jean, uma garota que escreve cartas para seus antigos amores e vê sua vida mudar quando elas são enviadas.',
       categoria: 'Romance'
     },
-        {
+    {
       id: 4,
       nome: 'Coleção Mistborn',
       autor: 'Brandon Sanderson',
@@ -67,6 +67,90 @@ export class ColecaoService {
       autor: 'C.S. Lewis',
       descricao: 'Os primeiros livros da série em que crianças atravessam portais para o reino mágico de Nárnia, onde animais falam e o leão Aslam defende o bem. Reúne os três primeiros títulos em ordem de publicação.',
       categoria: 'Fantasia'
+    },
+    {
+      id: 9,
+      nome: 'Coleção Percy Jackson',
+      autor: 'Rick Riordan',
+      descricao: 'Um garoto descobre ser filho de um deus grego e vive aventuras ao lado de outros semideuses, enfrentando monstros e deuses do Olimpo no mundo moderno.',
+      categoria: 'Fantasia'
+    },
+    {
+      id: 10,
+      nome: 'Coleção Crepúsculo',
+      autor: 'Stephenie Meyer',
+      descricao: 'O amor entre uma adolescente comum e um rapaz misterioso em uma cidade chuvosa do noroeste dos Estados Unidos, cercado de segredos sobrenaturais.',
+      categoria: 'Romance'
+    },
+    {
+      id: 11,
+      nome: 'Coleção Anna e o Beijo Francês',
+      autor: 'Stephanie Perkins',
+      descricao: 'Três romances independentes que se passam entre Paris, São Francisco e Nova York, com personagens que se cruzam ao longo da série.',
+      categoria: 'Romance'
+    },
+    {
+      id: 12,
+      nome: 'Coleção Como Eu Era Antes de Você',
+      autor: 'Jojo Moyes',
+      descricao: 'A história de Louisa Clark, uma jovem comum cuja vida muda depois de um emprego inesperado, e as escolhas que a levam a recomeçar.',
+      categoria: 'Romance'
+    },
+    {
+      id: 13,
+      nome: 'Coleção Divergente',
+      autor: 'Veronica Roth',
+      descricao: 'Em uma Chicago do futuro dividida em facções, uma jovem descobre que não se encaixa em nenhuma e se torna uma ameaça para o sistema.',
+      categoria: 'Ficção Científica'
+    },
+    {
+      id: 14,
+      nome: 'Coleção Maze Runner',
+      autor: 'James Dashner',
+      descricao: 'Jovens sem memória presos em um labirinto mortal precisam descobrir quem os colocou lá e como escapar.',
+      categoria: 'Ficção Científica'
+    },
+    {
+      id: 15,
+      nome: 'Coleção Duna',
+      autor: 'Frank Herbert',
+      descricao: 'Uma saga épica sobre poder, religião e ecologia no planeta desértico de Arrakis, fonte da substância mais valiosa do universo.',
+      categoria: 'Ficção Científica'
+    },
+    {
+      id: 16,
+      nome: 'Coleção Fundação',
+      autor: 'Isaac Asimov',
+      descricao: 'Com o fim do Império Galáctico previsto, um matemático cria um plano para encurtar a era de trevas que virá.',
+      categoria: 'Ficção Científica'
+    },
+    {
+      id: 17,
+      nome: 'Coleção Hercule Poirot',
+      autor: 'Agatha Christie',
+      descricao: 'Casos clássicos do detetive belga Hercule Poirot, que resolve crimes com raciocínio e atenção aos detalhes.',
+      categoria: 'Suspense'
+    },
+    {
+      id: 18,
+      nome: 'Coleção Robert Langdon',
+      autor: 'Dan Brown',
+      descricao: 'Thrillers em que um professor de simbologia decifra enigmas históricos e artísticos enquanto é perseguido em corridas contra o tempo.',
+      categoria: 'Suspense'
+    },
+    {
+      id: 19,
+      nome: 'Coleção Arsène Lupin',
+      autor: 'Maurice Leblanc',
+      descricao: 'As aventuras do elegante ladrão francês Arsène Lupin, mestre dos disfarces que desafia a polícia e até o maior detetive da época.',
+      categoria: 'Suspense'
+    },
+    {
+      id: 20,
+      nome: 'Coleção Millennium',
+      autor: 'Stieg Larsson',
+      descricao: 'Um jornalista e uma hacker brilhante investigam crimes e conspirações na Suécia em uma trilogia de suspense policial.',
+      categoria: 'Suspense'
     }
   ];
 
